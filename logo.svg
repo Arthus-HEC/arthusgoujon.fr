@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 110" role="img" aria-labelledby="logoTitle">
+  <title id="logoTitle">Arthus logo</title>
+  <path d="M24 92 L41 18 L50 18 L67 92" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="square" />
+  <path d="M34 55 H64" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="square" />
+  <path d="M18 100 H82" stroke="currentColor" stroke-width="10" stroke-linecap="square" />
+  <path d="M18 108 H82" stroke="currentColor" stroke-width="10" stroke-linecap="square" />
+</svg>

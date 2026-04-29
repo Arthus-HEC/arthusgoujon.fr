@@ -46,12 +46,21 @@
     }
 
     .nav-name {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.85rem;
       font-weight: 500;
       letter-spacing: 0.05em;
       text-decoration: none;
       color: var(--ink);
+    }
+
+    .site-logo {
+      width: 1.45rem;
+      height: auto;
+      display: block;
     }
 
     .nav-links {
@@ -283,7 +292,10 @@
 
     <!-- Nav -->
     <nav>
-      <a class="nav-name" href="#">Arthus Goujon</a>
+      <a class="nav-name" href="#">
+        <img class="site-logo" src="logo.svg" alt="Logo Arthus Goujon" />
+        <span>Arthus Goujon</span>
+      </a>
       <ul class="nav-links">
         <li><a href="#blog">Blog</a></li>
         <li><a href="#projects">Projects</a></li>
