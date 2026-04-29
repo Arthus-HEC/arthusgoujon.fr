@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog - Arthus Goujon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f5f0;
+      --ink: #1a1814;
+      --muted: #7a756a;
+      --accent: #c0392b;
+      --border: #e0dbd0;
+      --max: 680px;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Lora', Georgia, serif;
+      line-height: 1.75;
+      padding: 0 1.5rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    nav {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 2.5rem 0 2rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 4rem;
+    }
+
+    .nav-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .article-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 3rem;
+      letter-spacing: 0.04em;
+    }
+
+    .article-content {
+      margin-bottom: 4rem;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.6s ease forwards 0.1s;
+    }
+
+    .article-content p {
+      margin-bottom: 1.5rem;
+      max-width: 560px;
+    }
+
+    .article-content h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .article-content em {
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: color 0.15s;
+    }
+
+    .back-link:hover {
+      color: var(--accent);
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 520px) {
+      nav { flex-direction: column; gap: 1rem; }
+      h1 { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a class="nav-name" href="index.html">Arthus Goujon</a>
+      <ul class="nav-links">
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="projets.html">Projets</a></li>
+        <li><a href="page_de_garde.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <a href="page_de_garde.html#blog" class="back-link">← Retour au blog</a>
+
+    <article>
+      <h1>Hello World — Premiers pas et intentions</h1>
+      <div class="article-meta">2025</div>
+
+      <div class="article-content">
+        <p>
+          Bienvenue sur mon blog. C'est mon premier article et je voulais prendre un moment pour partager mes intentions et ce qui m'a motivé à créer cet espace.
+        </p>
+
+        <h2>Pourquoi un blog ?</h2>
+        <p>
+          En tant qu'étudiant à <em>HEC Paris</em> et <em>l'École Polytechnique</em>, je suis constamment exposé à de nouvelles idées, problèmes et perspectives. Un blog est pour moi un moyen de:
+        </p>
+        <p>
+          <strong>1. Documenter mon apprentissage</strong> — Écrire oblige à clarifier sa pensée. C'est un excellent moyen de consolider ce que j'apprends en économie, théorie des jeux et machine learning.
+        </p>
+        <p>
+          <strong>2. Partager avec d'autres</strong> — J'espère que mes réflexions pourront intéresser ou aider d'autres personnes dans des domaines similaires.
+        </p>
+        <p>
+          <strong>3. Construire au fur et à mesure</strong> — Ce blog évoluera avec mes projets et mes découvertes. C'est un travail en cours.
+        </p>
+
+        <h2>Ce qui m'intéresse</h2>
+        <p>
+          Mes trois grands domaines de passion sont:
+        </p>
+        <p>
+          <strong>L'économie</strong> — Comment fonctionnent les marchés, les incentives, et les systèmes complexes. Comment les technologies changent l'économie.
+        </p>
+        <p>
+          <strong>La théorie des jeux</strong> — Les interactions stratégiques, la coopération et le conflit. C'est fondamental pour comprendre l'économie et la technologie.
+        </p>
+        <p>
+          <strong>Le machine learning</strong> — L'IA est en train de transformer tous les domaines. Je veux comprendre comment l'utiliser de manière intelligente et éthique.
+        </p>
+
+        <h2>La suite</h2>
+        <p>
+          Dans les articles à venir, je vais partager des réflexions sur ces sujets, décomposer des concepts complexes et documenté mes projets. J'apprécie les retours et les discussions constructives.
+        </p>
+        <p>
+          Merci d'être venu lire. À bientôt !
+        </p>
+      </div>
+    </article>
+  </div>
+</body>
+</html>
