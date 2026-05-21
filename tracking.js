@@ -1,16 +1,11 @@
-const TRACKING_ENDPOINT = 'https://example.com/track';
+const TRACKING_ENDPOINT = '/track';
 
 function sendTrackingEvent(eventName, metadata = {}) {
-  if (!TRACKING_ENDPOINT || TRACKING_ENDPOINT === 'https://example.com/track') {
-    console.warn('[tracking] Tracking endpoint is not configured. Set TRACKING_ENDPOINT to your backend URL.');
-    return;
-  }
-
   const payload = {
     event: eventName,
     page: window.location.pathname,
     timestamp: new Date().toISOString(),
-    ...metadata,
+    metadata,
   };
 
   const body = JSON.stringify(payload);
