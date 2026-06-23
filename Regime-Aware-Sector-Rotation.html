@@ -181,32 +181,37 @@
     <a href="index.html#projects" class="back-link">← Back to projects</a>
 
     <article class="project-detail">
-      <h1>Optimal Routing in AMM-based Ecosystems</h1>
-      <p><em>Mathematical modelling of optimal routing in networks of Constant Function Market Makers.</em></p>
+      <h1>Regime-Aware Sector Rotation with Momentum and Canary Assets</h1>
+      <p><em>Research summary of a Python implementation and extension to U.S. sector ETFs.</em></p>
 
       <div>
-        <span class="project-tag">Crypto</span>
         <span class="project-tag">Quantitative Finance</span>
+        <span class="project-tag">Economics</span>
       </div>
 
       <h2>Overview</h2>
       <p>
-        The paper studies optimal routing through networks of CFMM pools, with a focus on Uniswap V2. It formulates trade execution as an optimization problem and shows that relaxing trading constraints yields a convex program that is exact under realistic growth and saturation assumptions.
+        This project reproduces and extends a regime-aware Hybrid Asset Allocation framework from market-cap ETFs to U.S. sector ETFs. It uses a canary asset momentum signal to define risk-on and risk-off regimes, implemented with month-end signals and a flat 5 bp turnover cost.
       </p>
 
-      <h2>Main results</h2>
+      <h2>Main findings</h2>
       <p>
-        Convex duality produces an equilibrium price system, and the absence of arbitrage is shown to be equivalent to the existence of a global price certificate compatible with each pool's local marginal prices. Arbitrage is interpreted as profitable swap cycles whose returns are bounded by round-trip fees.
+        The strongest full-sample strategy is Sector Top-2 SHY Net, which holds the two top offensive sectors in risk-on regimes and rotates fully to SHY in risk-off regimes. It produces the highest CAGR among tested rules while materially lowering drawdown versus broad equity benchmarks.
       </p>
 
-      <h2>Numerical illustration</h2>
+      <h2>Robustness</h2>
       <p>
-        A triangular network of three Uniswap V2 pools (WETH/USDC, WETH/DAI, USDC/DAI) is used to compare direct, indirect and optimal split routing. For a 10 WETH order, the optimal split sends 98.22% directly and only 0.18% indirectly, yielding about 5.7 DAI more than the best single route.
+        Walk-forward model selection and paired block bootstrap inference show that the full-sample winner is not always selected in real time, and raw outperformance over SPY and VTI is not statistically decisive. The clearest empirical contribution is the improved risk profile of sector momentum strategies.
       </p>
 
-      <h2>Technical approach</h2>
+      <h2>Strategy design</h2>
       <p>
-        The model relies on CFMM trading functions, transaction baskets, and convex relaxation. It is validated numerically with a general convex program solved by a conic interior-point solver, confirming that route allocation matters more than selecting a single path.
+        The model computes a 13612 momentum score for a canary asset and uses it to toggle between offensive and defensive allocations. Offensive sectors include XLK, XLY, XLI, XLF, XLE; defensive sectors include XLP, XLU, XLV; SHY is used as a clean risk-off allocation.
+      </p>
+
+      <h2>Limitations & next steps</h2>
+      <p>
+        The summary notes limitations from yfinance data, a U.S. ETF-only universe, simplified transaction costs, proxy factor regressions, and no multiple-testing adjustment. Recommended next steps include formal Fama-French/Carhart regressions, stress-period analysis, and additional robustness metrics.
       </p>
 
       <!-- Optional project links -->
