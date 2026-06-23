@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Regime-Aware Sector Rotation — Arthus Goujon</title>
+  <link rel="icon" href="logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f5f0;
+      --ink: #1a1814;
+      --muted: #7a756a;
+      --accent: #c0392b;
+      --border: #e0dbd0;
+      --max: 680px;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Lora', Georgia, serif;
+      line-height: 1.75;
+      padding: 0 1.5rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    nav {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 2.5rem 0 2rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 4rem;
+    }
+
+    .nav-name {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .site-logo {
+      width: 1.45rem;
+      height: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      font-weight: 600;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: color 0.15s;
+    }
+
+    .back-link:hover {
+      color: var(--accent);
+    }
+
+    .project-detail {
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.6s ease forwards 0.1s;
+    }
+
+    .project-detail p {
+      margin-bottom: 1.5rem;
+      max-width: 560px;
+    }
+
+    .project-detail h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-detail em {
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .project-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1px 6px;
+      margin: 0 0.35rem 0.5rem 0;
+      letter-spacing: 0.04em;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      transition: opacity 0.15s;
+    }
+
+    .project-link + .project-link {
+      margin-left: 1.25rem;
+    }
+
+    .project-link:hover {
+      opacity: 0.8;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 520px) {
+      nav { flex-direction: column; gap: 1rem; }
+      h1 { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a class="nav-name" href="index.html">
+        <img class="site-logo" src="logo.svg" alt="Logo Arthus Goujon" />
+        <span>Arthus Goujon</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <a href="index.html#projects" class="back-link">← Back to projects</a>
+
+    <article class="project-detail">
+      <h1>Regime-Aware Sector Rotation in Financial Markets</h1>
+      <p><em>Adaptive sector rotation strategy using regime detection for improved portfolio allocation.</em></p>
+
+      <div>
+        <span class="project-tag">Statistics</span>
+        <span class="project-tag">Economics</span>
+      </div>
+
+      <h2>Overview</h2>
+      <p>
+        This paper proposes a novel framework for sector rotation strategies that adapts to changing market regimes, enhancing portfolio performance through dynamic asset allocation.
+      </p>
+
+      <h2>Key ideas</h2>
+      <p>
+        The approach combines regime-sensitive indicators with sector allocation rules to shift exposure when economic conditions change, aiming for a more robust and resilient investment process.
+      </p>
+
+      <h2>Next steps</h2>
+      <p>
+        Add your methodology, results, and links to supporting datasets or code here.
+      </p>
+
+      <!-- Optional project links -->
+      <!-- <a href="#" class="project-link">View on GitHub</a> -->
+      <!-- <a href="#" class="project-link">Download document</a> -->
+    </article>
+  </div>
+  <script src="tracking.js"></script>
+</body>
+</html>
