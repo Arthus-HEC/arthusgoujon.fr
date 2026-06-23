@@ -181,27 +181,32 @@
     <a href="index.html#projects" class="back-link">← Back to projects</a>
 
     <article class="project-detail">
-      <h1>Regime-Aware Sector Rotation in Financial Markets</h1>
-      <p><em>Adaptive sector rotation strategy using regime detection for improved portfolio allocation.</em></p>
+      <h1>Optimal Routing in AMM-based Ecosystems</h1>
+      <p><em>Mathematical modelling of optimal routing in networks of Constant Function Market Makers.</em></p>
 
       <div>
-        <span class="project-tag">Statistics</span>
-        <span class="project-tag">Economics</span>
+        <span class="project-tag">Crypto</span>
+        <span class="project-tag">Quantitative Finance</span>
       </div>
 
       <h2>Overview</h2>
       <p>
-        This paper proposes a novel framework for sector rotation strategies that adapts to changing market regimes, enhancing portfolio performance through dynamic asset allocation.
+        The paper studies optimal routing through networks of CFMM pools, with a focus on Uniswap V2. It formulates trade execution as an optimization problem and shows that relaxing trading constraints yields a convex program that is exact under realistic growth and saturation assumptions.
       </p>
 
-      <h2>Key ideas</h2>
+      <h2>Main results</h2>
       <p>
-        The approach combines regime-sensitive indicators with sector allocation rules to shift exposure when economic conditions change, aiming for a more robust and resilient investment process.
+        Convex duality produces an equilibrium price system, and the absence of arbitrage is shown to be equivalent to the existence of a global price certificate compatible with each pool's local marginal prices. Arbitrage is interpreted as profitable swap cycles whose returns are bounded by round-trip fees.
       </p>
 
-      <h2>Next steps</h2>
+      <h2>Numerical illustration</h2>
       <p>
-        Add your methodology, results, and links to supporting datasets or code here.
+        A triangular network of three Uniswap V2 pools (WETH/USDC, WETH/DAI, USDC/DAI) is used to compare direct, indirect and optimal split routing. For a 10 WETH order, the optimal split sends 98.22% directly and only 0.18% indirectly, yielding about 5.7 DAI more than the best single route.
+      </p>
+
+      <h2>Technical approach</h2>
+      <p>
+        The model relies on CFMM trading functions, transaction baskets, and convex relaxation. It is validated numerically with a general convex program solved by a conic interior-point solver, confirming that route allocation matters more than selecting a single path.
       </p>
 
       <!-- Optional project links -->
