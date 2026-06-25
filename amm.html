@@ -1,166 +1,182 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Optimal Routing in AMM — Arthus Goujon</title>
+  <title>Optimal Routing in AMM-based Ecosystems — Arthus Goujon</title>
   <link rel="icon" href="logo.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --bg: #f7f5f0;
-      --ink: #1a1814;
-      --muted: #7a756a;
-      --accent: #c0392b;
-      --border: #e0dbd0;
-      --max: 680px;
-    }
+:root {
+  --bg: #f7f5f0;
+  --ink: #1a1814;
+  --muted: #7a756a;
+  --accent: #c0392b;
+  --border: #e0dbd0;
+  --max: 680px;
+}
 
-    html { font-size: 16px; }
+html { font-size: 16px; }
 
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: 'Lora', Georgia, serif;
-      line-height: 1.75;
-      padding: 0 1.5rem;
-      -webkit-font-smoothing: antialiased;
-    }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Lora', Georgia, serif;
+  line-height: 1.75;
+  padding: 0 1.5rem;
+  -webkit-font-smoothing: antialiased;
+}
 
-    .container {
-      max-width: var(--max);
-      margin: 0 auto;
-    }
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+}
 
-    nav {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      padding: 2.5rem 0 2rem;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 4rem;
-    }
+nav {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 2.5rem 0 2rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 4rem;
+}
 
-    .nav-name {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      text-decoration: none;
-      color: var(--ink);
-    }
+.nav-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  color: var(--ink);
+}
 
-    .site-logo {
-      width: 1.45rem;
-      height: auto;
-      display: block;
-    }
+.site-logo {
+  width: 1.45rem;
+  height: auto;
+  display: block;
+}
 
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
 
-    .nav-links a {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
-      color: var(--muted);
-      text-decoration: none;
-      letter-spacing: 0.04em;
-      transition: color 0.15s;
-    }
+.nav-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.15s;
+}
 
-    .nav-links a:hover { color: var(--ink); }
+.nav-links a:hover { color: var(--ink); }
 
-    h1 {
-      font-size: 1.8rem;
-      margin-bottom: 2rem;
-      font-weight: 600;
-    }
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
 
-    .back-link {
-      display: inline-block;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--muted);
-      text-decoration: none;
-      margin-bottom: 2rem;
-      transition: color 0.15s;
-    }
+.subtitle {
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  max-width: 560px;
+}
 
-    .back-link:hover {
-      color: var(--accent);
-    }
+.back-link {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-decoration: none;
+  margin-bottom: 2rem;
+  transition: color 0.15s;
+}
 
-    .project-detail {
-      opacity: 0;
-      transform: translateY(12px);
-      animation: fadeUp 0.6s ease forwards 0.1s;
-    }
+.back-link:hover {
+  color: var(--accent);
+}
 
-    .project-detail p {
-      margin-bottom: 1.5rem;
-      max-width: 560px;
-    }
+.project-detail {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeUp 0.6s ease forwards 0.1s;
+}
 
-    .project-detail h2 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-    }
+.project-detail p {
+  margin-bottom: 1.5rem;
+  max-width: 560px;
+}
 
-    .project-detail em {
-      color: var(--muted);
-      font-style: italic;
-    }
+.project-detail h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
 
-    .project-tag {
-      display: inline-block;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--muted);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      padding: 1px 6px;
-      margin: 0 0.35rem 0.5rem 0;
-      letter-spacing: 0.04em;
-    }
+.project-detail em {
+  color: var(--muted);
+  font-style: italic;
+}
 
-    .project-link {
-      display: inline-block;
-      margin-top: 1rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom: 1px solid var(--accent);
-      transition: opacity 0.15s;
-    }
+.project-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 1px 6px;
+  margin: 0 0.35rem 0.5rem 0;
+  letter-spacing: 0.04em;
+}
 
-    .project-link + .project-link {
-      margin-left: 1.25rem;
-    }
+.project-list {
+  margin: 0 0 1.5rem 1.2rem;
+  max-width: 560px;
+}
 
-    .project-link:hover {
-      opacity: 0.8;
-    }
+.project-list li {
+  margin-bottom: 0.55rem;
+}
 
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
+.project-link {
+  display: inline-block;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  transition: opacity 0.15s;
+}
 
-    @media (max-width: 520px) {
-      nav { flex-direction: column; gap: 1rem; }
-      h1 { font-size: 1.4rem; }
-    }
+.project-link:hover {
+  opacity: 0.8;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 520px) {
+  nav { flex-direction: column; gap: 1rem; }
+  h1 { font-size: 1.4rem; }
+}
+
+
   </style>
 </head>
 <body>
@@ -178,27 +194,75 @@
       </ul>
     </nav>
 
-    <a href="index.html#projects" class="back-link">← Back to projects</a>
+```
+<a href="index.html#projects" class="back-link">← Back to projects</a>
 
-    <article class="project-detail">
-      <h1>Optimal Routing in AMM-based Ecosystems</h1>
-      <p><em>Master Thesis</em></p>
+<article class="project-detail">
+  <h1>Optimal Routing in AMM-based Ecosystems</h1>
+  <p class="subtitle">
+    A mathematical study of optimal trade execution in networks of Automated Market Makers.
+  </p>
 
-      <div>
-        <span class="project-tag">Crypto</span>
-        <span class="project-tag">Quantitative Finance</span>
-      </div>
-
-      <h2>Overview</h2>
-      <p>
-        This thesis presents a rigorous mathematical framework for optimal routing in decentralized finance by transforming non-convex exchange constraints into a scalable convex optimization problem. This enables the simultaneous maximization of trader utility and the algorithmic identification of complex arbitrage opportunities within multi-asset liquidity networks.
-      </p>
-
-      <a href="https://github.com/Arthus-HEC/Optimal-Routing-in-AMM-based-Ecosystems-" class="project-link">View on GitHub</a>
-      <a href="Optimal Routing in AMM-based Ecosystems.pdf" download class="project-link">Download the working paper</a>
-      <!-- More content to be added -->
-    </article>
+  <div>
+    <span class="project-tag">Quantitative Finance</span>
+    <span class="project-tag">DeFi</span>
+    <span class="project-tag">Convex Optimization</span>
+    <span class="project-tag">AMM</span>
+    <span class="project-tag">Python</span>
   </div>
-  <script src="tracking.js"></script>
+
+  <h2>Overview</h2>
+  <p>
+    This project studies optimal routing in ecosystems of Automated Market Makers, with a focus on Constant Function Market Makers such as Uniswap V2. The central question is how to split a trade across several liquidity pools in order to obtain the best execution when prices move with trade size.
+  </p>
+
+  <p>
+    The project begins with the basic mechanics of an AMM: reserves, constant-product invariants, marginal price, effective price, slippage, and local arbitrage. It then moves from a single pool to a network of pools, where a trade can be executed directly, indirectly, or split across several routes.
+  </p>
+
+  <h2>Main idea</h2>
+  <p>
+    In an AMM, the price of a trade is not fixed. It depends on the size of the order relative to the reserves of the pool. This creates slippage: large orders receive a worse average execution price than small orders. Routing is therefore not only a graph problem, but a nonlinear optimization problem.
+  </p>
+
+  <p>
+    The key mathematical point is that, under suitable assumptions on the trading functions of the pools, the routing problem can be relaxed into a convex optimization problem. This makes it possible to characterize optimal trade execution and to connect routing with arbitrage detection.
+  </p>
+
+  <h2>Contributions</h2>
+  <ul class="project-list">
+    <li>Introduces the mechanics of Uniswap V2 through marginal price, effective price, slippage, and constant-product reserves.</li>
+    <li>Formulates optimal routing in a network of CFMMs as an optimization problem over local pool transactions and global token balances.</li>
+    <li>Shows how relaxing the trading constraints yields a convex program under standard concavity and monotonicity assumptions.</li>
+    <li>Uses convex duality to interpret Lagrange multipliers as equilibrium token prices and marginal values of pool liquidity.</li>
+    <li>Explains arbitrage detection as a special case of the routing framework.</li>
+    <li>Provides a reproducible numerical experiment on a triangular WETH / USDC / DAI network.</li>
+  </ul>
+
+  <h2>Methods</h2>
+  <p>
+    The project combines mathematical finance, convex optimization, and decentralized market microstructure. It uses CFMM trading functions, convex relaxations, KKT conditions, duality, price certificates, and cycle-based no-arbitrage conditions. The numerical section implements the routing problem in Python and compares direct routing, indirect routing, and optimal split routing.
+  </p>
+
+  <h2>Numerical illustration</h2>
+  <p>
+    The numerical experiment considers a synthetic but realistic network of three Uniswap V2 pools: WETH/USDC, WETH/DAI, and USDC/DAI. For a WETH-to-DAI trade, the optimal solution sends most of the order through the direct route and a small fraction through the indirect route. This split slightly reduces total slippage and becomes more valuable as the trade size increases.
+  </p>
+
+  <p>
+    For a 10 WETH order, the optimal split improves execution relative to the best single route. For larger orders, the benefit of splitting grows, reaching around 22 basis points in the 100 WETH example. The experiment also verifies the absence of arbitrage by exhibiting a compatible global price certificate.
+  </p>
+
+  <h2>Current status</h2>
+  <p>
+    This project was developed as a Master 1 research project in mathematics. A natural continuation would be to extend the numerical implementation to larger pool networks, include gas costs and fixed execution costs, and test the routing algorithm on real on-chain liquidity data.
+  </p>
+
+  <a href="Optimal Routing in AMM-based Ecosystems.pdf" class="project-link">Read the paper</a>
+  <!-- Replace or add this link if the project has a public GitHub repository. -->
+  <!-- <a href="https://github.com/your-username/your-repository" class="project-link">View on GitHub</a> -->
+</article>
+
+  </div>
 </body>
 </html>
