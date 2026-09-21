@@ -1,190 +1,265 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eligibility Scores and Reputation — Arthus Goujon</title>
+
+  <title>Scores as Infrastructures — Arthus Goujon</title>
+
   <link rel="icon" href="logo.svg" type="image/svg+xml" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-:root {
-  --bg: #f7f5f0;
-  --ink: #1a1814;
-  --muted: #7a756a;
-  --accent: #c0392b;
-  --border: #e0dbd0;
-  --max: 680px;
-}
+    :root {
+      --bg: #f7f5f0;
+      --ink: #1a1814;
+      --muted: #7a756a;
+      --accent: #c0392b;
+      --border: #e0dbd0;
+      --max: 680px;
+    }
 
-html { font-size: 16px; }
+    html {
+      font-size: 16px;
+    }
 
-body {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: 'Lora', Georgia, serif;
-  line-height: 1.75;
-  padding: 0 1.5rem;
-  -webkit-font-smoothing: antialiased;
-}
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Lora', Georgia, serif;
+      line-height: 1.75;
+      padding: 0 1.5rem;
+      -webkit-font-smoothing: antialiased;
+    }
 
-.container {
-  max-width: var(--max);
-  margin: 0 auto;
-}
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
 
-nav {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  padding: 2.5rem 0 2rem;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 4rem;
-}
+    /* ── Navigation ── */
 
-.nav-name {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-decoration: none;
-  color: var(--ink);
-}
+    nav {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 2.5rem 0 2rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 4rem;
+    }
 
-.site-logo {
-  width: 1.45rem;
-  height: auto;
-  display: block;
-}
+    .nav-name {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: var(--ink);
+    }
 
-.nav-links {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-}
+    .site-logo {
+      width: 1.45rem;
+      height: auto;
+      display: block;
+    }
 
-.nav-links a {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.78rem;
-  color: var(--muted);
-  text-decoration: none;
-  letter-spacing: 0.04em;
-  transition: color 0.15s;
-}
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
 
-.nav-links a:hover { color: var(--ink); }
+    .nav-links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.15s;
+    }
 
-h1 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
+    .nav-links a:hover {
+      color: var(--ink);
+    }
 
-.subtitle {
-  color: var(--muted);
-  font-style: italic;
-  margin-bottom: 1.5rem;
-  max-width: 560px;
-}
+    /* ── Project ── */
 
-.back-link {
-  display: inline-block;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  color: var(--muted);
-  text-decoration: none;
-  margin-bottom: 2rem;
-  transition: color 0.15s;
-}
+    .back-link {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: color 0.15s;
+    }
 
-.back-link:hover {
-  color: var(--accent);
-}
+    .back-link:hover {
+      color: var(--accent);
+    }
 
-.project-detail {
-  opacity: 0;
-  transform: translateY(12px);
-  animation: fadeUp 0.6s ease forwards 0.1s;
-}
+    .project-detail {
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.6s ease forwards 0.1s;
+    }
 
-.project-detail p {
-  margin-bottom: 1.5rem;
-  max-width: 560px;
-}
+    h1 {
+      font-size: 1.8rem;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
 
-.project-detail h2 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-}
+    .subtitle {
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      max-width: 580px;
+    }
 
-.project-detail em {
-  color: var(--muted);
-  font-style: italic;
-}
+    .project-detail p {
+      margin-bottom: 1.5rem;
+      max-width: 580px;
+    }
 
-.project-tag {
-  display: inline-block;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
-  color: var(--muted);
-  border: 1px solid var(--border);
-  border-radius: 2px;
-  padding: 1px 6px;
-  margin: 0 0.35rem 0.5rem 0;
-  letter-spacing: 0.04em;
-}
+    .project-detail h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-top: 2.4rem;
+      margin-bottom: 1rem;
+    }
 
-.project-list {
-  margin: 0 0 1.5rem 1.2rem;
-  max-width: 560px;
-}
+    .project-detail em {
+      color: var(--muted);
+      font-style: italic;
+    }
 
-.project-list li {
-  margin-bottom: 0.55rem;
-}
+    /* ── Tags ── */
 
-.project-link {
-  display: inline-block;
-  margin-top: 1rem;
-  margin-right: 1rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  color: var(--accent);
-  text-decoration: none;
-  border-bottom: 1px solid var(--accent);
-  transition: opacity 0.15s;
-}
+    .project-tags {
+      margin-bottom: 2rem;
+    }
 
-.project-link:hover {
-  opacity: 0.8;
-}
+    .project-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1px 6px;
+      margin: 0 0.35rem 0.5rem 0;
+      letter-spacing: 0.04em;
+    }
 
-@keyframes fadeUp {
-  to { opacity: 1; transform: translateY(0); }
-}
+    /* ── Lists ── */
 
-@media (max-width: 520px) {
-  nav { flex-direction: column; gap: 1rem; }
-  h1 { font-size: 1.4rem; }
-}
+    .project-list {
+      margin: 0 0 1.5rem 1.2rem;
+      max-width: 580px;
+    }
 
+    .project-list li {
+      margin-bottom: 0.65rem;
+    }
+
+    /* ── Highlight ── */
+
+    .result-box {
+      max-width: 580px;
+      margin: 2rem 0;
+      padding: 1.1rem 1.25rem;
+      border-left: 2px solid var(--accent);
+      background: rgba(192, 57, 43, 0.035);
+    }
+
+    .result-box p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    /* ── Links ── */
+
+    .project-links {
+      margin-top: 2.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-right: 1.25rem;
+      margin-bottom: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      transition: opacity 0.15s;
+    }
+
+    .project-link:hover {
+      opacity: 0.75;
+    }
+
+    /* ── Animation ── */
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── Mobile ── */
+
+    @media (max-width: 520px) {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      h1 {
+        font-size: 1.45rem;
+      }
+
+      .nav-links {
+        gap: 1.25rem;
+        flex-wrap: wrap;
+      }
+    }
   </style>
 </head>
+
 <body>
   <div class="container">
+
+    <!-- Navigation -->
+
     <nav>
       <a class="nav-name" href="index.html">
-        <img class="site-logo" src="logo.svg" alt="Logo Arthus Goujon" />
+        <img
+          class="site-logo"
+          src="logo.svg"
+          alt="Logo Arthus Goujon"
+        />
         <span>Arthus Goujon</span>
       </a>
+
       <ul class="nav-links">
         <li><a href="blog.html">Blog</a></li>
         <li><a href="index.html#projects">Projects</a></li>
@@ -193,62 +268,203 @@ h1 {
       </ul>
     </nav>
 
-<a href="index.html#projects" class="back-link">← Back to projects</a>
 
-<article class="project-detail">
-  <h1>Eligibility Scores and Reputation</h1>
-  <p class="subtitle">
-    A game-theoretic model of platform scores, reliance, and reputation in digital markets.
-  </p>
+    <!-- Back -->
 
-  <div>
-    <span class="project-tag">Game Theory</span>
-    <span class="project-tag">Market Design</span>
-    <span class="project-tag">Platform Economics</span>
-    <span class="project-tag">Reputation</span>
-    <span class="project-tag">Online Advertising</span>
-  </div>
+    <a href="index.html#projects" class="back-link">
+      ← Back to projects
+    </a>
 
-  <h2>Overview</h2>
-  <p>
-    This research project studies platform scores that are not only informative signals, but also rules of access to a digital infrastructure. The motivating example is an advertising platform where a favorable eligibility score increases the exposure of an ad by allowing it to enter more auctions, receive more impressions, or access better allocation channels.
-  </p>
 
-  <p>
-    The central concept is <em>reliance</em>: the extent to which an automated system, a marketplace, or an allocation pipeline mechanically relies on a score when making decisions. A score with high reliance can create more value, but it also creates stronger short-term incentives for the platform to be too permissive.
-  </p>
+    <!-- Project -->
 
-  <h2>Main idea</h2>
-  <p>
-    The model formalizes a dynamic trade-off. When a platform gives a favorable score to a low-quality object, it obtains an immediate gain from additional exposure. However, if this permissiveness is detected, part of the infrastructure may stop trusting the score. The platform then loses a future franchise value attached to the credibility of the scoring system.
-  </p>
+    <article class="project-detail">
 
-  <p>
-    This mechanism can generate a coordination problem. If the score is widely used, the platform has a lot to lose from damaging its credibility, which can discipline its behavior. If the score is barely used, the future loss is small, discipline is weak, and low reliance can become self-fulfilling.
-  </p>
+      <h1>
+        Scores as Infrastructures
+      </h1>
 
-  <h2>Contributions</h2>
-  <ul class="project-list">
-    <li>Defines eligibility scores as objects that are both informational signals and infrastructure rules.</li>
-    <li>Introduces a reliance map linking score reliability, platform discipline, and future usage of the score.</li>
-    <li>Shows how low reliance can become a stable trap, even when a high-trust equilibrium also exists.</li>
-    <li>Studies the role of detection effort and transparency in preserving the credibility of the score.</li>
-    <li>Provides a numerical illustration of multiple equilibria, bifurcation, hysteresis, and safe online learning.</li>
-  </ul>
+      <p class="subtitle">
+        Automated exposure, reliability and strategic discipline
+        in advertising platforms.
+      </p>
 
-  <h2>Methods</h2>
-  <p>
-    The project uses tools from game theory, reputation models, platform economics, and dynamic systems. The formal analysis characterizes incentive constraints, fixed points of the reliance map, stable and unstable equilibria, and a sufficient safety frontier for detection effort. A numerical section illustrates the theoretical mechanism through simulated reliance dynamics.
-  </p>
 
-  <h2>Current status</h2>
-  <p>
-    This is an ongoing research-oriented project developed during my M1 work. The next step is to make the numerical analysis more systematic, in particular by mapping the robustness of the reliance trap and by developing the online learning extension into a safer exploration problem.
-  </p>
+      <!-- Tags -->
 
-  <a href="https://github.com/Arthus-HEC/Rating-Design-and-Reputation-A-Dynamic-Approach-to-Financial-Evaluation" class="project-link">View on GitHub</a>
-</article>
-```
+      <div class="project-tags">
+        <span class="project-tag">Game Theory</span>
+        <span class="project-tag">Platform Economics</span>
+        <span class="project-tag">Bayesian Games</span>
+        <span class="project-tag">Reputation</span>
+        <span class="project-tag">Online Advertising</span>
+      </div>
+
+
+      <!-- Overview -->
+
+      <h2>Overview</h2>
+
+      <p>
+        Digital platforms increasingly use scores not only to transmit information,
+        but also to determine access to automated allocation mechanisms.
+        In advertising markets, for example, a favorable eligibility score can give
+        an ad access to additional auctions, demand and exposure.
+      </p>
+
+      <p>
+        This project studies the strategic consequences of this dual role.
+        A platform privately observes an imperfect signal about the quality of an ad
+        and then assigns a public favorable or unfavorable score.
+        After a negative signal, it may strategically upgrade the ad in order to
+        obtain additional demand and exposure.
+      </p>
+
+
+      <!-- Mechanism -->
+
+      <h2>Main mechanism</h2>
+
+      <p>
+        Upgrading a low-quality ad creates an immediate benefit, but it can be detected
+        through probabilistic auditing. Detection damages the credibility of the scoring
+        system and moves the platform into a persistent low-trust state in which the score
+        becomes uninformative and automated exposure falls to its minimum level.
+      </p>
+
+      <p>
+        The model therefore creates a feedback loop:
+        the scoring rule determines the reliability of the score,
+        reliability determines how much exposure downstream actors delegate to it,
+        and this exposure changes the platform's incentive to preserve the score's credibility.
+      </p>
+
+
+      <!-- Main results -->
+
+      <h2>Main results</h2>
+
+      <ul class="project-list">
+
+        <li>
+          Derives the incentive constraint governing truthful scoring by comparing
+          the immediate gain from upgrading with the expected loss of future platform value.
+        </li>
+
+        <li>
+          Identifies a central quantity, <strong>G</strong>, which determines when
+          exposure and strategic discipline are complementary.
+        </li>
+
+        <li>
+          Shows that when <strong>G &gt; 0</strong>, greater exposure can make truthful
+          scoring easier to sustain because the future value destroyed by a loss of
+          credibility grows sufficiently strongly.
+        </li>
+
+        <li>
+          Endogenizes exposure as an increasing function of score reliability and
+          obtains a high-reliability truthful equilibrium and a low-reliability
+          pooling equilibrium.
+        </li>
+
+        <li>
+          Characterizes a unique interior equilibrium separating the two regimes.
+          Under the adjustment dynamics used in the paper, the two extreme equilibria
+          are locally stable while the interior equilibrium is unstable.
+        </li>
+
+        <li>
+          Shows that stronger auditing can support the high-trust equilibrium and
+          shift the tipping point in its favor, but does not eliminate the degraded
+          low-exposure equilibrium.
+        </li>
+
+      </ul>
+
+
+      <!-- Highlight -->
+
+      <div class="result-box">
+        <p>
+          In the reference calibration, the unstable tipping point occurs at an
+          upgrading probability of approximately <strong>0.370</strong>.
+          Below this point, the platform prefers not to upgrade after a negative signal;
+          above it, upgrading becomes the preferred action.
+        </p>
+      </div>
+
+
+      <!-- Interpretation -->
+
+      <h2>Interpretation</h2>
+
+      <p>
+        The model highlights a form of bistability.
+        A reliable score can sustain high automated exposure, which increases the value
+        of preserving its credibility. But once the system moves sufficiently far toward
+        strategic upgrading, lower reliability reduces exposure and weakens the future
+        value that disciplines the platform.
+      </p>
+
+      <p>
+        As a result, stronger monitoring can improve the resilience of a trusted system
+        without necessarily being sufficient to restore a system that is already trapped
+        in the degraded equilibrium.
+      </p>
+
+
+      <!-- Methods -->
+
+      <h2>Methods</h2>
+
+      <p>
+        The project combines dynamic Bayesian games, signaling,
+        reputation mechanisms and nonlinear equilibrium analysis.
+        The analysis characterizes incentive constraints, stationary equilibria,
+        local stability and comparative statics with respect to exposure and
+        auditing intensity.
+      </p>
+
+
+      <!-- Context -->
+
+      <h2>Research context</h2>
+
+      <p>
+        This project was developed during a six-month research internship
+        at CNRS – HEC Paris under the supervision of Marie Laclau.
+        The motivating application is advertising-platform eligibility scoring,
+        although the mechanism can apply more broadly to digital platforms
+        where scores simultaneously transmit information and control access
+        to automated allocation.
+      </p>
+
+
+      <!-- Links -->
+
+      <div class="project-links">
+
+        <a
+          href="Scores-as-Infrastructures.pdf"
+          class="project-link"
+          target="_blank"
+        >
+          Read the paper
+        </a>
+
+        <a
+          href="https://github.com/Arthus-HEC/Rating-Design-and-Reputation-A-Dynamic-Approach-to-Financial-Evaluation"
+          class="project-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View on GitHub
+        </a>
+
+      </div>
+
+    </article>
 
   </div>
 </body>
