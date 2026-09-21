@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Mario Party: Tricky Turntable — Arthus Goujon</title>
+
+  <link rel="icon" href="logo.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f7f5f0;
+      --ink: #1a1814;
+      --muted: #7a756a;
+      --accent: #c0392b;
+      --border: #e0dbd0;
+      --max: 680px;
+    }
+
+    html {
+      font-size: 16px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Lora', Georgia, serif;
+      line-height: 1.75;
+      padding: 0 1.5rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    /* ── Navigation ── */
+
+    nav {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 2.5rem 0 2rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 4rem;
+    }
+
+    .nav-name {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .site-logo {
+      width: 1.45rem;
+      height: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+    }
+
+    /* ── Project ── */
+
+    .back-link {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: color 0.15s;
+    }
+
+    .back-link:hover {
+      color: var(--accent);
+    }
+
+    .project-detail {
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.6s ease forwards 0.1s;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      max-width: 580px;
+    }
+
+    .project-detail p {
+      margin-bottom: 1.5rem;
+      max-width: 580px;
+    }
+
+    .project-detail h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-top: 2.4rem;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Tags ── */
+
+    .project-tags {
+      margin-bottom: 2rem;
+    }
+
+    .project-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1px 6px;
+      margin: 0 0.35rem 0.5rem 0;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Lists ── */
+
+    .project-list {
+      margin: 0 0 1.5rem 1.2rem;
+      max-width: 580px;
+    }
+
+    .project-list li {
+      margin-bottom: 0.65rem;
+    }
+
+    /* ── Results ── */
+
+    .result-box {
+      max-width: 580px;
+      margin: 2rem 0;
+      padding: 1.1rem 1.25rem;
+      border-left: 2px solid var(--accent);
+      background: rgba(192, 57, 43, 0.035);
+    }
+
+    .result-box p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    /* ── Figures ── */
+
+    figure {
+      margin: 2.5rem 0;
+      max-width: 680px;
+    }
+
+    figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--border);
+      background: white;
+    }
+
+    figcaption {
+      margin-top: 0.7rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.67rem;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    /* ── Links ── */
+
+    .project-links {
+      margin-top: 2.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-right: 1.25rem;
+      margin-bottom: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      transition: opacity 0.15s;
+    }
+
+    .project-link:hover {
+      opacity: 0.75;
+    }
+
+    /* ── Animation ── */
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── Mobile ── */
+
+    @media (max-width: 520px) {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      h1 {
+        font-size: 1.45rem;
+      }
+
+      .nav-links {
+        gap: 1.25rem;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Navigation -->
+
+    <nav>
+      <a class="nav-name" href="index.html">
+        <img
+          class="site-logo"
+          src="logo.svg"
+          alt="Logo Arthus Goujon"
+        />
+        <span>Arthus Goujon</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+
+    <!-- Back -->
+
+    <a href="index.html#projects" class="back-link">
+      ← Back to projects
+    </a>
+
+
+    <!-- Project -->
+
+    <article class="project-detail">
+
+      <h1>
+        Mario Party: Tricky Turntable
+      </h1>
+
+      <p class="subtitle">
+        Game theory, Bayesian opponent modelling and reinforcement learning
+        in a simple adaptive-agent environment.
+      </p>
+
+
+      <!-- Tags -->
+
+      <div class="project-tags">
+        <span class="project-tag">Machine Learning</span>
+        <span class="project-tag">Game Theory</span>
+        <span class="project-tag">Bayesian Learning</span>
+        <span class="project-tag">Reinforcement Learning</span>
+        <span class="project-tag">Online Learning</span>
+        <span class="project-tag">Python</span>
+      </div>
+
+
+      <!-- Overview -->
+
+      <h2>Overview</h2>
+
+      <p>
+        This project starts from <em>Tricky Turntable</em>, a simple game
+        inspired by Mario Party that can first be solved analytically using
+        game theory.
+      </p>
+
+      <p>
+        I then turn the game into an adaptive-agent benchmark:
+        instead of assuming that the opponent follows a fixed equilibrium strategy,
+        an agent must learn how the opponent behaves from repeated interactions
+        and adapt its own decisions accordingly.
+      </p>
+
+
+      <!-- Game -->
+
+      <h2>The game</h2>
+
+      <p>
+        Each player chooses between three actions: pressing zero, one or two buttons.
+        The resulting position on the turntable depends on the sum of both actions
+        modulo four.
+      </p>
+
+      <p>
+        Using the payoff vector
+        <strong>(10, 5, 2, −1)</strong>, the payoff matrix for the learning agent is
+      </p>
+
+      <div class="result-box">
+        <p>
+          [[10, 5, 2],<br>
+          &nbsp;[5, 2, −1],<br>
+          &nbsp;[2, −1, 10]]
+        </p>
+      </div>
+
+      <p>
+        In the benchmark strategic game, eliminating the dominated action gives
+        an equilibrium that mixes equally between actions 0 and 2, with an expected
+        payoff of 6.
+      </p>
+
+
+      <!-- Learning agents -->
+
+      <h2>Learning agents</h2>
+
+      <p>
+        The project compares three approaches with different assumptions about
+        the opponent.
+      </p>
+
+      <ul class="project-list">
+
+        <li>
+          <strong>Marginal Bayesian learning</strong> estimates only the opponent's
+          unconditional action frequencies.
+        </li>
+
+        <li>
+          <strong>State-conditioned Bayesian learning</strong> estimates the opponent's
+          behavior conditional on the agent's previous action.
+        </li>
+
+        <li>
+          <strong>Tabular Q-learning</strong> does not explicitly model the opponent
+          and instead learns state-action values directly from observed rewards.
+        </li>
+
+      </ul>
+
+      <p>
+        This creates a simple comparison between explicit opponent modelling
+        and model-free reinforcement learning.
+      </p>
+
+
+      <!-- Reactive opponents -->
+
+      <h2>Reactive opponents</h2>
+
+      <p>
+        The first experiment introduces opponents whose actions depend on the
+        learner's previous action.
+      </p>
+
+      <ul class="project-list">
+
+        <li>
+          <strong>Mirror</strong> copies the learner's previous action with
+          90% probability.
+        </li>
+
+        <li>
+          <strong>Switch</strong> usually maps action 0 to 2, action 2 to 0,
+          and keeps action 1 unchanged.
+        </li>
+
+      </ul>
+
+      <p>
+        This distinction is important because a learner that only estimates
+        unconditional action frequencies cannot represent the strategic structure
+        of a reactive opponent.
+      </p>
+
+
+      <!-- Benchmark -->
+
+      <h2>Benchmark results</h2>
+
+      <figure>
+        <img
+          src="final_benchmark.png"
+          alt="Performance comparison between Bayesian learning, Q-learning and the finite-horizon oracle"
+          loading="lazy"
+        />
+
+        <figcaption>
+          Average payoff over the final 100 interactions against the Mirror and
+          Switch opponents. The state-conditioned Bayesian agent approaches the
+          finite-horizon oracle in both environments.
+        </figcaption>
+      </figure>
+
+      <p>
+        Against the Switch opponent, the limitation of the marginal model becomes
+        particularly clear. Because the opponent reacts to the learner's state,
+        unconditional frequencies discard crucial information.
+      </p>
+
+      <p>
+        The conditional Bayesian model instead learns
+        the relevant state-dependent response and reaches near-oracle performance.
+        In the final 100 interactions against Switch, its average payoff is
+        approximately <strong>9.47</strong>, essentially matching the
+        finite-horizon oracle, while Q-learning reaches approximately
+        <strong>8.35</strong>.
+      </p>
+
+      <div class="result-box">
+        <p>
+          The experiment illustrates the value of the right inductive bias:
+          when the opponent's behavior has a simple structure that can be modelled,
+          explicit Bayesian opponent modelling can learn substantially faster
+          than a more general model-free approach.
+        </p>
+      </div>
+
+
+      <!-- Concept drift -->
+
+      <h2>Concept drift</h2>
+
+      <p>
+        The second experiment asks a different question:
+        what happens when the opponent itself changes strategy?
+      </p>
+
+      <p>
+        The opponent initially chooses actions according to
+        <strong>(0.8, 0.0, 0.2)</strong>, before switching halfway through
+        the interaction to <strong>(0.2, 0.0, 0.8)</strong>.
+      </p>
+
+      <p>
+        Three adaptive mechanisms are compared:
+        full-history Bayesian learning, sliding-window Bayesian learning,
+        and constant-step Q-learning.
+      </p>
+
+
+      <figure>
+        <img
+          src="concept_drift_adaptation.png"
+          alt="Adaptation of Bayesian and Q-learning agents after an opponent regime shift"
+          loading="lazy"
+        />
+
+        <figcaption>
+          Probability of choosing the new best response after the opponent changes
+          regime at interaction 500.
+        </figcaption>
+      </figure>
+
+
+      <!-- Concept drift results -->
+
+      <h2>Adaptation results</h2>
+
+      <p>
+        Full-history Bayesian learning performs poorly after the change because
+        observations from the old regime remain embedded in the posterior.
+        The model is statistically consistent for a stationary environment,
+        but that memory becomes a disadvantage after a structural break.
+      </p>
+
+      <p>
+        A sliding-window Bayesian learner solves this problem by retaining only
+        recent observations. In the benchmark, it reaches the adaptation criterion
+        in approximately <strong>60 rounds</strong>, compared with
+        <strong>315 rounds</strong> for constant-step Q-learning.
+      </p>
+
+      <div class="result-box">
+        <p>
+          Sliding-window Bayesian learning adapts approximately
+          <strong>5.3× faster</strong> than Q-learning and reduces post-change
+          cumulative pseudo-regret by roughly <strong>89%</strong> relative to
+          full-history Bayesian updating.
+        </p>
+      </div>
+
+
+      <!-- Interpretation -->
+
+      <h2>What the experiments show</h2>
+
+      <p>
+        The project illustrates two complementary ideas.
+        First, correctly modelling the structure of another agent can dramatically
+        improve learning efficiency. Second, a statistically richer history is not
+        always better when the environment is non-stationary.
+      </p>
+
+      <p>
+        The comparison therefore connects game theory and machine learning:
+        strategic structure determines which information is relevant,
+        while the learning rule determines how quickly that structure can be
+        inferred and updated.
+      </p>
+
+
+      <!-- Methods -->
+
+      <h2>Methods</h2>
+
+      <p>
+        The experiments are implemented from scratch in Python using NumPy.
+        They combine analytical game-theoretic reasoning, Dirichlet-Bayesian
+        opponent modelling, tabular Q-learning, online adaptation and
+        Monte Carlo simulation.
+      </p>
+
+      <p>
+        The implementation is deliberately lightweight and does not rely on
+        a machine-learning framework, making the learning mechanisms and
+        updating rules explicit.
+      </p>
+
+
+      <!-- Project status -->
+
+      <h2>Project status</h2>
+
+      <p>
+        This is an independent machine-learning project designed as a small
+        controlled laboratory for studying adaptive decision-making.
+        The current benchmark focuses on simple reactive opponents and a single
+        regime shift; natural extensions include richer opponent classes,
+        Bayesian change-point detection and partially observable environments.
+      </p>
+
+
+    </article>
+
+  </div>
+</body>
+</html>
