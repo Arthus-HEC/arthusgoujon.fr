@@ -3,12 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resume - Arthus Goujon</title>
+
+  <title>Resume — Arthus Goujon</title>
+
   <link rel="icon" href="logo.svg" type="image/svg+xml" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
       --bg: #f7f5f0;
@@ -19,7 +30,9 @@
       --max: 680px;
     }
 
-    html { font-size: 16px; }
+    html {
+      font-size: 16px;
+    }
 
     body {
       background: var(--bg);
@@ -34,6 +47,8 @@
       max-width: var(--max);
       margin: 0 auto;
     }
+
+    /* ── Navigation ── */
 
     nav {
       display: flex;
@@ -77,58 +92,16 @@
       transition: color 0.15s;
     }
 
-    .nav-links a:hover { color: var(--ink); }
-
-    h1 {
-      font-size: 1.8rem;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
+    .nav-links a:hover {
+      color: var(--ink);
     }
 
-    .resume-content {
-      margin-bottom: 4rem;
+    /* ── Content ── */
+
+    .resume {
       opacity: 0;
       transform: translateY(12px);
       animation: fadeUp 0.6s ease forwards 0.1s;
-    }
-
-    .resume-section {
-      margin-bottom: 2.5rem;
-    }
-
-    .resume-section h2 {
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1rem;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.5rem;
-    }
-
-    .entry {
-      margin-bottom: 1.5rem;
-    }
-
-    .entry-title {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.2rem;
-    }
-
-    .entry-meta {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-bottom: 0.3rem;
-      letter-spacing: 0.04em;
-    }
-
-    .entry-description {
-      font-size: 0.95rem;
-      color: var(--ink);
-      line-height: 1.6;
     }
 
     .back-link {
@@ -145,144 +118,192 @@
       color: var(--accent);
     }
 
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
+    h1 {
+      font-size: 1.8rem;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+      font-weight: 600;
     }
 
+    .subtitle {
+      color: var(--muted);
+      font-style: italic;
+      max-width: 560px;
+      margin-bottom: 2rem;
+    }
+
+    /* ── Links ── */
+
+    .resume-links {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .resume-link {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      transition: opacity 0.15s;
+    }
+
+    .resume-link:hover {
+      opacity: 0.75;
+    }
+
+    /* ── PDF Preview ── */
+
+    .pdf-container {
+      width: 100%;
+      margin-bottom: 4rem;
+      border: 1px solid var(--border);
+      background: white;
+    }
+
+    .pdf-container iframe {
+      width: 100%;
+      height: 880px;
+      display: block;
+      border: 0;
+    }
+
+    .pdf-fallback {
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .pdf-fallback a {
+      color: var(--accent);
+    }
+
+    /* ── Animation ── */
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── Mobile ── */
+
     @media (max-width: 520px) {
-      nav { flex-direction: column; gap: 1rem; }
-      h1 { font-size: 1.4rem; }
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .nav-links {
+        gap: 1.25rem;
+        flex-wrap: wrap;
+      }
+
+      h1 {
+        font-size: 1.45rem;
+      }
+
+      .pdf-container iframe {
+        height: 650px;
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="container">
+
+    <!-- Navigation -->
+
     <nav>
       <a class="nav-name" href="index.html">
-        <img class="site-logo" src="logo.svg" alt="Logo Arthus Goujon" />
+        <img
+          class="site-logo"
+          src="logo.svg"
+          alt="Logo Arthus Goujon"
+        />
         <span>Arthus Goujon</span>
       </a>
+
       <ul class="nav-links">
         <li><a href="blog.html">Blog</a></li>
-        <li><a href="projets.html">Projects</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
         <li><a href="resume.html">Resume</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
       </ul>
     </nav>
 
-    <a href="index.html" class="back-link">← Back to home</a>
 
-    <article>
+    <!-- Resume -->
+
+    <main class="resume">
+
+      <a href="index.html" class="back-link">
+        ← Back to home
+      </a>
+
       <h1>Resume</h1>
-      <div class="entry-meta" style="margin-bottom: 1.5rem;">
-        arthus.goujon@hec.edu | +33 6 28 84 73 99 | <a href="https://linkedin.com/in/arthus-goujon/" target="_blank" style="color: var(--accent); text-decoration: none;">LinkedIn</a> | <a href="https://github.com/Arthus-HEC" target="_blank" style="color: var(--accent); text-decoration: none;">GitHub</a>
+
+      <p class="subtitle">
+        Education, research experience and selected projects in
+        applied mathematics, quantitative finance and machine learning.
+      </p>
+
+      <div class="resume-links">
+
+        <a
+          href="Arthus-Goujon-CV.pdf"
+          class="resume-link"
+          target="_blank"
+        >
+          Open PDF
+        </a>
+
+        <a
+          href="Arthus-Goujon-CV.pdf"
+          class="resume-link"
+          download
+        >
+          Download CV
+        </a>
+
+        <a
+          href="mailto:arthus.goujon@hec.edu"
+          class="resume-link"
+        >
+          Contact
+        </a>
+
       </div>
 
-      <div class="resume-content">
-        <!-- Education -->
-        <div class="resume-section">
-          <h2>Education</h2>
-          
-          <div class="entry">
-            <div class="entry-title">Institut Polytechnique de Paris</div>
-            <div class="entry-meta">Sep 2026 - June 2027</div>
-            <div class="entry-description">
-              <strong>Incoming Master's degree in Quantitative Economics and Finance</strong><br>
-              Relevant courses: Time Series, Econometrics, Macroeconomics, Game Theory
-            </div>
-          </div>
 
-          <div class="entry">
-            <div class="entry-title">Université d'Aix-Marseille</div>
-            <div class="entry-meta">Sep 2025 - June 2026</div>
-            <div class="entry-description">
-              <strong>Master's degree in Mathematics</strong><br>
-              Research: Amenable Groups (Seminar Presentation), Automated Market Making (Master Thesis)<br>
-              Relevant courses: Stochastic Processes, Partial Differential Equations, Measure and Probability Theory
-            </div>
-          </div>
+      <!-- PDF Preview -->
 
-          <div class="entry">
-            <div class="entry-title">HEC Paris</div>
-            <div class="entry-meta">Sep 2023 – May 2027</div>
-            <div class="entry-description">
-              <strong>Master in Management, "Grande Ecole" program</strong><br>
-              Completed a Bachelor's degree in Mathematics alongside my studies at HEC Paris<br>
-              Relevant courses: Data Science, Data Analytics, Statistics, Macroeconomics, Microeconomics
-            </div>
-          </div>
-        </div>
+      <div class="pdf-container">
 
-        <!-- Research Experience -->
-        <div class="resume-section">
-          <h2>Research Experience</h2>
-          <div class="entry">
-            <div class="entry-title">Research Intern in Economics and Applied Mathematics</div>
-            <div class="entry-meta">CNRS-HEC Paris – Paris, France | March 2026 – Present</div>
-            <div class="entry-description">
-              <strong>Advisor:</strong> Marie LACLAU<br>
-              <strong>Research Topic:</strong> Applied Mathematics, Game Theory
-            </div>
-          </div>
-        </div>
+        <iframe
+          src="Arthus-Goujon-CV.pdf#view=FitH"
+          title="Arthus Goujon Resume"
+        >
+        </iframe>
 
-        <!-- Quantitative & Research Projects -->
-        <div class="resume-section">
-          <h2>Quantitative & Research Projects</h2>
-          <div class="entry">
-            <div class="entry-title">Optimal Routing in Automated Market Maker (AMM) Ecosystems</div>
-            <div class="entry-meta">Master Thesis</div>
-            <div class="entry-description">
-              <strong>Modeling:</strong> Represented liquidity pool networks (e.g., Uniswap) using graph theory and a discrete-time mathematical framework<br>
-              <strong>Optimization & Arbitrage:</strong> Formulated optimal swap path algorithms to maximize asset output and analyzed no-arbitrage conditions through the lens of martingales<br>
-              <strong>DeFi Analysis:</strong> Studied deterministic price impact and the mathematical impossibility of profitable cycles in decentralized finance ecosystems
-            </div>
+        <noscript>
+          <div class="pdf-fallback">
+            Your browser cannot display the PDF preview.
+            <a href="Arthus-Goujon-CV.pdf">
+              Open the resume here.
+            </a>
           </div>
-        </div>
+        </noscript>
 
-        <!-- Technical Skills -->
-        <div class="resume-section">
-          <h2>Technical Skills</h2>
-          <div class="entry">
-            <div class="entry-description">
-              <strong>Mathematics:</strong> Analysis, Probabilities, Linear Algebra, Stochastic Processes
-            </div>
-          </div>
-          <div class="entry">
-            <div class="entry-description">
-              <strong>Programming:</strong> Python (Numpy, Pandas, Scikit-learn, Statsmodels), SQL
-            </div>
-          </div>
-          <div class="entry">
-            <div class="entry-description">
-              <strong>Languages:</strong> French (native), English (Fluent)
-            </div>
-          </div>
-        </div>
-
-        <!-- Professional Experience -->
-        <div class="resume-section">
-          <h2>Professional Experience</h2>
-          <div class="entry">
-            <div class="entry-title">Business Strategy Intern</div>
-            <div class="entry-meta">Neat Protect – Paris, France | Sep 2025 – Feb 2026</div>
-            <div class="entry-description">
-              Conducted data cleaning and analysis to support the design of a go-to-market strategy, identifying key drivers and target segments<br>
-              Built a Python application (Streamlit) to perform market sizing and business plan simulations, supporting strategic decision-making
-            </div>
-          </div>
-        </div>
-
-        <!-- Additional Education -->
-        <div class="resume-section">
-          <h2>Additional Education</h2>
-          <div class="entry">
-            <div class="entry-title">Master in Statistics, Machine Learning, and Algorithms</div>
-            <div class="entry-meta">2026-2027 (Auditor: Statistical Learning)</div>
-          </div>
-        </div>
       </div>
-    </article>
+
+    </main>
+
   </div>
 </body>
 </html>
