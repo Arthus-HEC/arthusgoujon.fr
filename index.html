@@ -5,10 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arthus Goujon</title>
   <link rel="icon" href="logo.svg" type="image/svg+xml" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
       --bg: #f7f5f0;
@@ -19,7 +28,9 @@
       --max: 680px;
     }
 
-    html { font-size: 16px; }
+    html {
+      font-size: 16px;
+    }
 
     body {
       background: var(--bg);
@@ -31,12 +42,14 @@
     }
 
     /* ── Layout ── */
+
     .container {
       max-width: var(--max);
       margin: 0 auto;
     }
 
-    /* ── Nav ── */
+    /* ── Navigation ── */
+
     nav {
       display: flex;
       align-items: baseline;
@@ -79,9 +92,12 @@
       transition: color 0.15s;
     }
 
-    .nav-links a:hover { color: var(--ink); }
+    .nav-links a:hover {
+      color: var(--ink);
+    }
 
     /* ── Intro ── */
+
     .intro {
       margin-bottom: 4.5rem;
       opacity: 0;
@@ -127,6 +143,7 @@
     }
 
     /* ── Sections ── */
+
     section {
       margin-bottom: 4rem;
       opacity: 0;
@@ -134,9 +151,13 @@
       animation: fadeUp 0.6s ease forwards;
     }
 
-    section:nth-of-type(1) { animation-delay: 0.2s; }
-    section:nth-of-type(2) { animation-delay: 0.35s; }
-    section:nth-of-type(3) { animation-delay: 0.5s; }
+    section:nth-of-type(1) {
+      animation-delay: 0.2s;
+    }
+
+    section:nth-of-type(2) {
+      animation-delay: 0.35s;
+    }
 
     .section-header {
       display: flex;
@@ -163,9 +184,12 @@
       transition: color 0.15s;
     }
 
-    .view-all:hover { color: var(--accent); }
+    .view-all:hover {
+      color: var(--accent);
+    }
 
     /* ── Projects ── */
+
     .projects-list {
       display: flex;
       flex-direction: column;
@@ -181,9 +205,13 @@
       transition: background 0.15s;
     }
 
-    .project-item:last-child { border-bottom: 1px solid var(--border); }
+    .project-item:last-child {
+      border-bottom: 1px solid var(--border);
+    }
 
-    .project-item:hover .project-title { color: var(--accent); }
+    .project-item:hover .project-title {
+      color: var(--accent);
+    }
 
     .project-title {
       font-family: 'Lora', serif;
@@ -213,6 +241,7 @@
     }
 
     /* ── Blog ── */
+
     .blog-list {
       display: flex;
       flex-direction: column;
@@ -228,7 +257,9 @@
       color: inherit;
     }
 
-    .blog-item:last-child { border-bottom: 1px solid var(--border); }
+    .blog-item:last-child {
+      border-bottom: 1px solid var(--border);
+    }
 
     .blog-date {
       font-family: 'JetBrains Mono', monospace;
@@ -243,9 +274,12 @@
       transition: color 0.15s;
     }
 
-    .blog-item:hover .blog-title { color: var(--accent); }
+    .blog-item:hover .blog-title {
+      color: var(--accent);
+    }
 
     /* ── Footer ── */
+
     footer {
       padding: 2.5rem 0 3rem;
       border-top: 1px solid var(--border);
@@ -273,30 +307,56 @@
       transition: color 0.15s;
     }
 
-    .footer-links a:hover { color: var(--accent); }
+    .footer-links a:hover {
+      color: var(--accent);
+    }
 
     /* ── Animation ── */
+
     @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* ── Mobile ── */
+
     @media (max-width: 520px) {
-      nav { flex-direction: column; gap: 1rem; }
-      footer { flex-direction: column; gap: 1rem; text-align: center; }
-      .section-header { flex-direction: column; gap: 0.5rem; }
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+
+      .section-header {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="container">
 
-    <!-- Nav -->
+    <!-- Navigation -->
+
     <nav>
-      <a class="nav-name" href="#">
-        <img class="site-logo" src="logo.svg" alt="Logo Arthus Goujon" />
+      <a class="nav-name" href="index.html">
+        <img
+          class="site-logo"
+          src="logo.svg"
+          alt="Logo Arthus Goujon"
+        />
         <span>Arthus Goujon</span>
       </a>
+
       <ul class="nav-links">
         <li><a href="#blog">Blog</a></li>
         <li><a href="#projects">Projects</a></li>
@@ -305,89 +365,182 @@
       </ul>
     </nav>
 
+
     <!-- Intro -->
+
     <div class="intro">
-      <p>Hello, I am <strong>Arthus Goujon</strong>. Welcome to my blog and portfolio.</p>
 
       <p>
-        I am a student at <em>HEC Paris</em> and <em>Institut Polytechnique de Paris</em>, interested in <strong>applied mathematics</strong>, <strong>machine learning</strong>, economics, and quantitative finance. My academic and professional path has progressively led me toward more research-oriented work, where rigorous mathematical modelling, empirical analysis, and programming can be combined to study real-world problems.
+        Hello, I am <strong>Arthus Goujon</strong>.
       </p>
 
       <p>
-        My main interests include <strong>quantitative finance</strong>, <strong>market design</strong>, <strong>game theory</strong>, and <strong>machine learning</strong>. I am particularly drawn to problems involving strategic interactions, market mechanisms, prediction, optimization, and financial decision-making. In the long run, I aim to pursue research-driven work, either as a quantitative researcher or through a PhD / industrial PhD path in a financial institution or a technology company.
+        I am a student at <em>École Polytechnique – Institut Polytechnique de Paris</em>
+        and <em>HEC Paris</em>, with a background in mathematics.
+        I am interested in <strong>applied mathematics</strong>,
+        <strong>machine learning</strong>, <strong>game theory</strong>,
+        and <strong>quantitative finance</strong>.
       </p>
 
       <p>
-        This website gathers projects, research notes, and personal initiatives developed alongside my studies and internships. I use it to document my work, share reproducible code and ideas, and explore questions at the intersection of mathematics, economics, and data.
+        This website gathers some of my research projects and other work.
       </p>
 
-      <p>
-        Feel free to reach out if you have questions, feedback, or if you are working on similar topics.
-      </p>
       <div class="social-links">
-        <a href="https://github.com/Arthus-HEC" target="_blank">GitHub</a>
-        <a href="https://x.com" target="_blank">X / Twitter</a>
-        <a href="https://www.linkedin.com/in/arthus-goujon-07819b20b/" target="_blank">LinkedIn</a>
+        <a
+          href="https://github.com/Arthus-HEC"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/arthus-goujon-07819b20b/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
       </div>
+
     </div>
 
+
     <!-- Projects -->
+
     <section id="projects">
+
       <div class="section-header">
         <h2>Projects</h2>
       </div>
+
       <div class="projects-list">
-        <a class="project-item" href="amm.html">
-          <div class="project-title">Optimal Routing in AMM-based Ecosystems</div>
-          <div class="project-desc">This paper establishes a rigorous mathematical framework for optimal routing in decentralized finance by transforming non-convex exchange constraints into a scalable convex optimization problem, enabling the simultaneous maximization of trader utility and the algorithmic identification of complex arbitrage opportunities within multi-asset liquidity networks.</div>
-          <span class="project-tag">Crypto</span>
-          <span class="project-tag">Quantitative Finance</span>
-        </a>
-        <a class="project-item" href="Markov-Detection.html">
-          <div class="project-title">Markov Chain Detection in Financial Time Series</div>
-          <div class="project-desc">This paper introduces a novel approach for detecting regime switches in financial time series using Markov chains, providing a more robust framework for risk management and portfolio optimization.</div>
-          <span class="project-tag">Quantitative Finance</span>
-          <span class="project-tag">Economics</span>
-        </a>
-        <a class="project-item" href="Regime-Aware-Sector-Rotation.html">
-          <div class="project-title">Regime-Aware Sector Rotation in Financial Markets</div>
-          <div class="project-desc">This paper proposes a novel framework for sector rotation strategies that adapts to changing market regimes, enhancing portfolio performance through dynamic asset allocation.</div>
-          <span class="project-tag">Quantitative Finance</span>
-          <span class="project-tag">Economics</span>
-        </a>
+
+
+        <!-- Scores as Infrastructures -->
+
         <a class="project-item" href="market_design.html">
-          <div class="project-title">Quand les scores deviennent des infrastructures : reliance, réputation et détection dans les plateformes publicitaires</div>
-          <div class="project-desc">This paper examines how rating systems evolve into infrastructural elements within digital advertising platforms, analyzing the interplay between reliance on ratings, reputation dynamics, and detection mechanisms.</div>
+
+          <div class="project-title">
+            Scores as Infrastructures
+          </div>
+
+          <div class="project-desc">
+            A dynamic game-theoretic model of strategic scoring, reputation,
+            endogenous exposure and probabilistic auditing on digital platforms.
+          </div>
+
           <span class="project-tag">Game Theory</span>
-          <span class="project-tag">Auction Market</span>
-          <span class="project-tag">Ad Platforms</span>
+          <span class="project-tag">Market Design</span>
+          <span class="project-tag">Platform Economics</span>
+
         </a>
+
+
+        <!-- AMM -->
+
+        <a class="project-item" href="amm.html">
+
+          <div class="project-title">
+            Optimal Routing in AMM-based Ecosystems
+          </div>
+
+          <div class="project-desc">
+            A convex optimization framework for optimal trade routing across
+            networks of Constant Function Market Makers, with dual
+            no-arbitrage certificates and numerical implementation in Python.
+          </div>
+
+          <span class="project-tag">Quantitative Finance</span>
+          <span class="project-tag">Convex Optimization</span>
+          <span class="project-tag">DeFi</span>
+
+        </a>
+
+
+        <!-- Mario Party -->
+
+        <a class="project-item" href="mario.html">
+
+          <div class="project-title">
+            Mario Party: Tricky Turntable
+          </div>
+
+          <div class="project-desc">
+            An adaptive-agent benchmark combining game theory, Bayesian
+            opponent modelling and reinforcement learning across more than
+            60 million simulated interactions.
+          </div>
+
+          <span class="project-tag">Machine Learning</span>
+          <span class="project-tag">Bayesian Learning</span>
+          <span class="project-tag">Reinforcement Learning</span>
+
+        </a>
+
+
       </div>
     </section>
+
 
     <!-- Blog -->
+
     <section id="blog">
+
       <div class="section-header">
         <h2>Blog</h2>
-        <a class="view-all" href="blog.html">View all →</a>
-      </div>
-      <div class="blog-list">
-        <a class="blog-item" href="blog.html">
-          <span class="blog-date">2025</span>
-          <span class="blog-title">Hello World — First steps and intentions</span>
+        <a class="view-all" href="blog.html">
+          View all →
         </a>
       </div>
+
+      <div class="blog-list">
+
+        <a class="blog-item" href="blog.html">
+          <span class="blog-date">2026</span>
+          <span class="blog-title">
+            Work in progress
+          </span>
+        </a>
+
+      </div>
+
     </section>
 
+
     <!-- Footer -->
+
     <footer id="contact">
-      <span class="footer-name">Arthus Goujon</span>
+
+      <span class="footer-name">
+        Arthus Goujon
+      </span>
+
       <div class="footer-links">
-        <a href="https://github.com/Arthus-HEC" target="_blank">GitHub</a>
-        <a href="https://x.com/" target="_blank">X</a>
-        <a href="https://www.linkedin.com/in/arthus-goujon-07819b20b/" target="_blank">LinkedIn</a>
-        <a href="mailto:arthus.goujon@hec.edu">Email</a>
+
+        <a
+          href="https://github.com/Arthus-HEC"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/arthus-goujon-07819b20b/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+
+        <a href="mailto:arthus.goujon@hec.edu">
+          Email
+        </a>
+
       </div>
+
     </footer>
 
   </div>
