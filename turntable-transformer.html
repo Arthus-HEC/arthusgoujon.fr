@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Tiny Turntable Transformer — Arthus Goujon</title>
+
+  <meta
+    name="description"
+    content="A small Transformer project combining sequence modelling and game theory to predict and adapt to opponent behavior in Mario Party: Tricky Turntable."
+  />
+
+  <link
+    rel="canonical"
+    href="https://arthusgoujon.xyz/turntable-transformer.html"
+  />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Arthus Goujon" />
+  <meta
+    property="og:title"
+    content="Tiny Turntable Transformer — Arthus Goujon"
+  />
+  <meta
+    property="og:description"
+    content="Sequence modelling, opponent prediction and game-theoretic decision-making with a tiny Transformer."
+  />
+  <meta
+    property="og:url"
+    content="https://arthusgoujon.xyz/turntable-transformer.html"
+  />
+
+  <meta name="twitter:card" content="summary" />
+  <meta
+    name="twitter:title"
+    content="Tiny Turntable Transformer — Arthus Goujon"
+  />
+  <meta
+    name="twitter:description"
+    content="Sequence modelling, opponent prediction and game-theoretic decision-making with a tiny Transformer."
+  />
+
+  <link rel="icon" href="logo.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f7f5f0;
+      --ink: #1a1814;
+      --muted: #7a756a;
+      --accent: #c0392b;
+      --border: #e0dbd0;
+      --max: 680px;
+    }
+
+    html {
+      font-size: 16px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Lora', Georgia, serif;
+      line-height: 1.75;
+      padding: 0 1.5rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    /* ── Navigation ── */
+
+    nav {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 2.5rem 0 2rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 4rem;
+    }
+
+    .nav-name {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .site-logo {
+      width: 1.45rem;
+      height: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+    }
+
+    /* ── Project ── */
+
+    .back-link {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: color 0.15s;
+    }
+
+    .back-link:hover {
+      color: var(--accent);
+    }
+
+    .project-detail {
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.6s ease forwards 0.1s;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      max-width: 580px;
+    }
+
+    .project-detail p {
+      margin-bottom: 1.5rem;
+      max-width: 580px;
+    }
+
+    .project-detail h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-top: 2.4rem;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Tags ── */
+
+    .project-tags {
+      margin-bottom: 2rem;
+    }
+
+    .project-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1px 6px;
+      margin: 0 0.35rem 0.5rem 0;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Lists ── */
+
+    .project-list {
+      margin: 0 0 1.5rem 1.2rem;
+      max-width: 580px;
+    }
+
+    .project-list li {
+      margin-bottom: 0.65rem;
+    }
+
+    /* ── Highlight ── */
+
+    .result-box {
+      max-width: 580px;
+      margin: 2rem 0;
+      padding: 1.1rem 1.25rem;
+      border-left: 2px solid var(--accent);
+      background: rgba(192, 57, 43, 0.035);
+    }
+
+    .result-box p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    /* ── Architecture ── */
+
+    .architecture {
+      max-width: 580px;
+      margin: 1.5rem 0 2rem;
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+    }
+
+    .architecture-line {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.73rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    /* ── Figures ── */
+
+    figure {
+      margin: 2.5rem 0;
+      max-width: 680px;
+    }
+
+    figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--border);
+      background: white;
+    }
+
+    figcaption {
+      margin-top: 0.7rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.67rem;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    /* ── Links ── */
+
+    .project-links {
+      margin-top: 2.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-right: 1.25rem;
+      margin-bottom: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      transition: opacity 0.15s;
+    }
+
+    .project-link:hover {
+      opacity: 0.75;
+    }
+
+    /* ── Animation ── */
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── Mobile ── */
+
+    @media (max-width: 520px) {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      h1 {
+        font-size: 1.45rem;
+      }
+
+      .nav-links {
+        gap: 1.25rem;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Navigation -->
+
+    <nav>
+      <a class="nav-name" href="index.html">
+        <img
+          class="site-logo"
+          src="logo.svg"
+          alt="Logo Arthus Goujon"
+        />
+        <span>Arthus Goujon</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+
+    <!-- Back -->
+
+    <a href="index.html#projects" class="back-link">
+      ← Back to projects
+    </a>
+
+
+    <!-- Project -->
+
+    <article class="project-detail">
+
+      <h1>
+        Tiny Turntable Transformer
+      </h1>
+
+      <p class="subtitle">
+        Sequence modelling, opponent prediction and game-theoretic
+        decision-making in a deliberately small Transformer.
+      </p>
+
+
+      <!-- Tags -->
+
+      <div class="project-tags">
+        <span class="project-tag">Deep Learning</span>
+        <span class="project-tag">Transformers</span>
+        <span class="project-tag">Game Theory</span>
+        <span class="project-tag">Sequence Modelling</span>
+        <span class="project-tag">Concept Drift</span>
+        <span class="project-tag">PyTorch</span>
+      </div>
+
+
+      <!-- Overview -->
+
+      <h2>Overview</h2>
+
+      <p>
+        This project extends my earlier work on
+        <em>Mario Party: Tricky Turntable</em> by replacing explicit
+        Bayesian opponent models with a small Transformer trained to infer
+        an opponent's behavior directly from recent interactions.
+      </p>
+
+      <p>
+        The objective is intentionally simple: use the smallest architecture
+        possible to understand how a Transformer can extract a hidden behavioral
+        rule from a short sequence, predict the opponent's next action, and turn
+        that prediction into a strategic decision.
+      </p>
+
+
+      <!-- Problem -->
+
+      <h2>The prediction problem</h2>
+
+      <p>
+        The opponent follows one of two noisy behavioral rules.
+      </p>
+
+      <ul class="project-list">
+        <li>
+          <strong>Mirror:</strong> usually copies our previous action.
+        </li>
+
+        <li>
+          <strong>Switch:</strong> usually maps action 0 to 2,
+          action 1 to 1, and action 2 to 0.
+        </li>
+      </ul>
+
+      <p>
+        The Transformer is not told which rule generated the sequence.
+        It only observes the recent history of joint actions and must predict
+        the opponent's next move.
+      </p>
+
+
+      <!-- Representation -->
+
+      <h2>Sequence representation</h2>
+
+      <p>
+        Each interaction contains our action and the opponent's action,
+        with both taking values in {0, 1, 2}.
+        A joint interaction is encoded as a single token:
+      </p>
+
+      <div class="result-box">
+        <p>
+          token = 3 × our action + opponent action
+        </p>
+      </div>
+
+      <p>
+        This produces a vocabulary of only <strong>9 possible tokens</strong>.
+        The model observes the previous <strong>8 interactions</strong>
+        and predicts one of the three possible opponent actions.
+      </p>
+
+
+      <!-- Architecture -->
+
+      <h2>Architecture</h2>
+
+      <p>
+        The network is deliberately tiny so that every component remains
+        interpretable and the full training pipeline can be understood directly.
+      </p>
+
+      <div class="architecture">
+        <div class="architecture-line">
+          9 interaction tokens
+        </div>
+        <div class="architecture-line">
+          ↓
+        </div>
+        <div class="architecture-line">
+          token embeddings + positional embeddings
+        </div>
+        <div class="architecture-line">
+          ↓
+        </div>
+        <div class="architecture-line">
+          1 Transformer encoder layer
+        </div>
+        <div class="architecture-line">
+          ↓
+        </div>
+        <div class="architecture-line">
+          4 attention heads · hidden dimension 24
+        </div>
+        <div class="architecture-line">
+          ↓
+        </div>
+        <div class="architecture-line">
+          3-class opponent-action prediction
+        </div>
+      </div>
+
+      <p>
+        The full model contains approximately
+        <strong>5.3k trainable parameters</strong>.
+      </p>
+
+
+      <!-- Game theory -->
+
+      <h2>From prediction to decision</h2>
+
+      <p>
+        The neural network is used only to predict the opponent.
+        Strategic decision-making remains separate.
+      </p>
+
+      <p>
+        The Transformer's logits are converted into probabilities
+        over the opponent's three possible actions. For each action available
+        to the agent, I then compute its expected payoff under the original
+        Tricky Turntable payoff matrix.
+      </p>
+
+      <div class="result-box">
+        <p>
+          Deep learning predicts the opponent.<br>
+          Game theory chooses the best response.
+        </p>
+      </div>
+
+      <p>
+        This separation makes the model easier to interpret:
+        the neural network solves a supervised sequence-prediction problem,
+        while the decision layer applies an explicit expected-utility rule.
+      </p>
+
+
+      <!-- Training -->
+
+      <h2>Training results</h2>
+
+      <p>
+        In the concept-drift benchmark, the Transformer is trained on trajectories
+        generated by noisy Mirror and Switch opponents, with the hidden strategy
+        changing during each trajectory.
+      </p>
+
+      <p>
+        After 10 epochs, the recorded test accuracy reaches
+        <strong>83.7%</strong>.
+      </p>
+
+      <figure>
+        <img
+          src="transformer-training-accuracy.png"
+          alt="Test accuracy of the Tiny Turntable Transformer during training"
+          loading="lazy"
+        />
+
+        <figcaption>
+          Test accuracy during training. The model reaches 83.7% after
+          ten epochs on trajectories containing hidden strategy changes.
+        </figcaption>
+      </figure>
+
+
+      <!-- Concept drift -->
+
+      <h2>Concept drift</h2>
+
+      <p>
+        The more interesting experiment introduces a hidden regime change.
+        Each trajectory begins with either Mirror or Switch and then switches
+        to the other behavior at an unknown point.
+      </p>
+
+      <p>
+        The model receives neither the regime label nor the change point.
+        Its only information is the rolling context of the last eight interactions.
+      </p>
+
+      <figure>
+        <img
+          src="transformer-concept-drift.png"
+          alt="Transformer prediction accuracy after a hidden change in opponent strategy"
+          loading="lazy"
+        />
+
+        <figcaption>
+          Prediction accuracy as new observations from the post-change regime
+          enter the Transformer's context window.
+        </figcaption>
+      </figure>
+
+
+      <!-- Adaptation results -->
+
+      <h2>Adaptation results</h2>
+
+      <p>
+        Immediately after the hidden strategy change, the model's prediction
+        accuracy falls to <strong>36.6%</strong>, close to chance.
+      </p>
+
+      <p>
+        It then adapts rapidly as observations from the new regime replace
+        observations from the previous one in the context window:
+      </p>
+
+      <ul class="project-list">
+        <li>
+          <strong>1 new observation:</strong> 74.3% accuracy
+        </li>
+
+        <li>
+          <strong>2 new observations:</strong> 83.8% accuracy
+        </li>
+
+        <li>
+          <strong>4 new observations:</strong> 88.4% accuracy
+        </li>
+
+        <li>
+          <strong>7 new observations:</strong> 88.0% accuracy
+        </li>
+      </ul>
+
+      <div class="result-box">
+        <p>
+          The model recovers most of its predictive performance after only
+          two observations from the new behavioral regime, despite never being
+          explicitly told that a regime change occurred.
+        </p>
+      </div>
+
+
+      <!-- Interpretation -->
+
+      <h2>Interpretation</h2>
+
+      <p>
+        The experiment provides a small-scale illustration of one of the main
+        strengths of attention-based sequence models: predictions can depend on
+        recent patterns in the interaction history rather than on a fixed,
+        explicitly specified opponent model.
+      </p>
+
+      <p>
+        In this environment, the context window also creates a simple mechanism
+        for adaptation. Old-regime observations progressively leave the sequence,
+        while new-regime observations become dominant, allowing the model to
+        change its prediction without an explicit change-point detector.
+      </p>
+
+
+      <!-- Relation to previous project -->
+
+      <h2>Relation to the earlier Turntable project</h2>
+
+      <p>
+        My first Tricky Turntable project compared explicit Bayesian
+        opponent modelling with model-free reinforcement learning.
+        This project studies the same underlying strategic environment from
+        a different angle: whether a neural sequence model can learn the relevant
+        behavioral structure directly from interaction data.
+      </p>
+
+      <p>
+        Together, the two projects provide a controlled comparison between
+        explicit probabilistic modelling, reinforcement learning and
+        representation learning with Transformers.
+      </p>
+
+
+      <!-- Methods -->
+
+      <h2>Methods</h2>
+
+      <p>
+        The project is implemented from scratch in PyTorch and uses synthetic
+        trajectories generated from the game's behavioral rules.
+        The main components are token and positional embeddings,
+        multi-head self-attention, cross-entropy training and an explicit
+        game-theoretic best-response layer.
+      </p>
+
+
+      <!-- Status -->
+
+      <h2>Project status</h2>
+
+      <p>
+        This is a deliberately small educational deep-learning project.
+        The goal is not to maximize model scale, but to make the mechanics of
+        sequence modelling, attention and strategic decision-making transparent
+        enough that each part of the pipeline can be inspected and explained.
+      </p>
+
+
+      <!-- Links -->
+
+      <div class="project-links">
+
+        <a
+          href="https://github.com/Arthus-HEC/Turntable-Transformer"
+          class="project-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View on GitHub
+        </a>
+
+        <a
+          href="mario.html"
+          class="project-link"
+        >
+          Earlier Turntable project
+        </a>
+
+      </div>
+
+    </article>
+
+  </div>
+</body>
+</html>
