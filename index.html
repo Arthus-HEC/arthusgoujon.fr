@@ -57,7 +57,7 @@
       --muted: #7a756a;
       --accent: #c0392b;
       --border: #e0dbd0;
-      --max: 680px;
+      --max: 1040px;
     }
 
     html {
@@ -141,9 +141,7 @@
     ───────────────────────────── */
 
     .hero {
-      width: min(1040px, calc(100vw - 3rem));
-
-      margin-left: 50%;
+      width: 100%;
       margin-bottom: 4.5rem;
 
       display: grid;
@@ -155,13 +153,8 @@
       align-items: center;
 
       opacity: 0;
-
-      transform:
-        translateX(-50%)
-        translateY(12px);
-
-      animation:
-        heroFadeUp 0.6s ease forwards 0.1s;
+      transform: translateY(12px);
+      animation: fadeUp 0.6s ease forwards 0.1s;
     }
 
     .intro p {
@@ -247,7 +240,10 @@
     ───────────────────────────── */
 
     section {
+      max-width: 760px;
+      margin-right: auto;
       margin-bottom: 4rem;
+
       opacity: 0;
       transform: translateY(12px);
       animation: fadeUp 0.6s ease forwards;
@@ -452,18 +448,6 @@
 
     }
 
-    @keyframes heroFadeUp {
-
-      to {
-        opacity: 1;
-
-        transform:
-          translateX(-50%)
-          translateY(0);
-      }
-
-    }
-
 
     /* ─────────────────────────────
        Responsive
@@ -472,21 +456,17 @@
     @media (max-width: 850px) {
 
       .hero {
-        width: 100%;
-        margin-left: 0;
-
         grid-template-columns: 1fr;
-
         gap: 1rem;
-
-        transform: translateY(12px);
-
-        animation: fadeUp 0.6s ease forwards 0.1s;
       }
 
       .torus-wrap {
         width: min(320px, 80vw);
         margin: 0 auto;
+      }
+
+      section {
+        max-width: 100%;
       }
 
     }
@@ -526,8 +506,7 @@
     }
 
 
-    /* Accessibility:
-       respect users who disabled animations */
+    /* Accessibility */
 
     @media (prefers-reduced-motion: reduce) {
 
@@ -603,17 +582,14 @@
         </p>
 
         <p>
-
           I am a student at
           <em>École Polytechnique – Institut Polytechnique de Paris</em>
           and <em>HEC Paris</em>, with a background in mathematics.
-
           I am interested in
           <strong>applied mathematics</strong>,
           <strong>machine learning</strong>,
           <strong>game theory</strong>,
           and <strong>quantitative finance</strong>.
-
         </p>
 
         <p>
@@ -691,11 +667,9 @@
           </div>
 
           <div class="project-desc">
-
             A dynamic game-theoretic model of strategic scoring,
             reputation, endogenous exposure and probabilistic auditing
             on digital platforms.
-
           </div>
 
           <span class="project-tag">
@@ -725,12 +699,10 @@
           </div>
 
           <div class="project-desc">
-
             A convex optimization framework for optimal trade routing
             across networks of Constant Function Market Makers,
             with dual no-arbitrage certificates and numerical
             implementation in Python.
-
           </div>
 
           <span class="project-tag">
@@ -760,11 +732,9 @@
           </div>
 
           <div class="project-desc">
-
             An adaptive-agent benchmark combining game theory,
             Bayesian opponent modelling and reinforcement learning
             across more than 60 million simulated interactions.
-
           </div>
 
           <span class="project-tag">
@@ -794,11 +764,9 @@
           </div>
 
           <div class="project-desc">
-
             A small Transformer that learns hidden opponent behavior
             from recent interactions and combines sequence predictions
             with a game-theoretic best-response layer.
-
           </div>
 
           <span class="project-tag">
@@ -935,20 +903,21 @@
           100
         );
 
-      camera.position.z = 4.8;
+      /*
+       * Slightly further away than before.
+       * This leaves enough room around the torus
+       * for every possible rotation.
+       */
+      camera.position.z = 5.8;
 
 
       /* Renderer */
 
       const renderer =
         new THREE.WebGLRenderer({
-
           canvas: canvas,
-
           antialias: true,
-
           alpha: true
-
         });
 
 
@@ -964,8 +933,8 @@
 
       const geometry =
         new THREE.TorusGeometry(
-          1.15,
-          0.34,
+          1.12,
+          0.33,
           28,
           120
         );
@@ -975,15 +944,10 @@
 
       const material =
         new THREE.MeshBasicMaterial({
-
           color: 0xc0392b,
-
           wireframe: true,
-
           transparent: true,
-
           opacity: 0.72
-
         });
 
 
