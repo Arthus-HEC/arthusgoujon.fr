@@ -3,39 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Arthus Goujon</title>
+
   <meta
-  name="description"
-  content="Arthus Goujon — student at École Polytechnique and HEC Paris, interested in applied mathematics, machine learning, game theory and quantitative finance."
-/>
+    name="description"
+    content="Arthus Goujon — student at École Polytechnique and HEC Paris, interested in applied mathematics, machine learning, game theory and quantitative finance."
+  />
 
-<link rel="canonical" href="https://arthusgoujon.xyz/" />
+  <link rel="canonical" href="https://arthusgoujon.xyz/" />
 
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="Arthus Goujon" />
-<meta property="og:title" content="Arthus Goujon" />
-<meta
-  property="og:description"
-  content="Applied mathematics, machine learning, game theory and quantitative finance."
-/>
-<meta property="og:url" content="https://arthusgoujon.xyz/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Arthus Goujon" />
+  <meta property="og:title" content="Arthus Goujon" />
 
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Arthus Goujon" />
-<meta
-  name="twitter:description"
-  content="Applied mathematics, machine learning, game theory and quantitative finance."
-/>
+  <meta
+    property="og:description"
+    content="Applied mathematics, machine learning, game theory and quantitative finance."
+  />
+
+  <meta property="og:url" content="https://arthusgoujon.xyz/" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Arthus Goujon" />
+
+  <meta
+    name="twitter:description"
+    content="Applied mathematics, machine learning, game theory and quantitative finance."
+  />
+
   <link rel="icon" href="logo.svg" type="image/svg+xml" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+
   <link
     href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet"
   />
 
   <style>
-    *, *::before, *::after {
+
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -61,16 +71,23 @@
       line-height: 1.75;
       padding: 0 1.5rem;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    /* ── Layout ── */
+
+    /* ─────────────────────────────
+       Layout
+    ───────────────────────────── */
 
     .container {
       max-width: var(--max);
       margin: 0 auto;
     }
 
-    /* ── Navigation ── */
+
+    /* ─────────────────────────────
+       Navigation
+    ───────────────────────────── */
 
     nav {
       display: flex;
@@ -118,13 +135,33 @@
       color: var(--ink);
     }
 
-    /* ── Intro ── */
 
-    .intro {
+    /* ─────────────────────────────
+       Hero / Intro
+    ───────────────────────────── */
+
+    .hero {
+      width: min(1040px, calc(100vw - 3rem));
+
+      margin-left: 50%;
       margin-bottom: 4.5rem;
+
+      display: grid;
+      grid-template-columns:
+        minmax(0, 1.35fr)
+        minmax(260px, 0.8fr);
+
+      gap: 4rem;
+      align-items: center;
+
       opacity: 0;
-      transform: translateY(12px);
-      animation: fadeUp 0.6s ease forwards 0.1s;
+
+      transform:
+        translateX(-50%)
+        translateY(12px);
+
+      animation:
+        heroFadeUp 0.6s ease forwards 0.1s;
     }
 
     .intro p {
@@ -143,10 +180,16 @@
       font-style: italic;
     }
 
+
+    /* ─────────────────────────────
+       Social links
+    ───────────────────────────── */
+
     .social-links {
       display: flex;
       gap: 1.25rem;
       margin-top: 1.5rem;
+      flex-wrap: wrap;
     }
 
     .social-links a {
@@ -156,7 +199,10 @@
       text-decoration: none;
       border-bottom: 1px solid var(--border);
       padding-bottom: 1px;
-      transition: color 0.15s, border-color 0.15s;
+
+      transition:
+        color 0.15s,
+        border-color 0.15s;
     }
 
     .social-links a:hover {
@@ -164,7 +210,41 @@
       border-color: var(--accent);
     }
 
-    /* ── Sections ── */
+
+    /* ─────────────────────────────
+       Torus
+    ───────────────────────────── */
+
+    .torus-wrap {
+      position: relative;
+
+      width: 100%;
+      aspect-ratio: 1 / 1;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      min-width: 0;
+
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .torus-canvas {
+      position: absolute;
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      display: block;
+    }
+
+
+    /* ─────────────────────────────
+       Sections
+    ───────────────────────────── */
 
     section {
       margin-bottom: 4rem;
@@ -210,7 +290,10 @@
       color: var(--accent);
     }
 
-    /* ── Projects ── */
+
+    /* ─────────────────────────────
+       Projects
+    ───────────────────────────── */
 
     .projects-list {
       display: flex;
@@ -251,18 +334,27 @@
 
     .project-tag {
       display: inline-block;
+
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.65rem;
+
       color: var(--muted);
+
       border: 1px solid var(--border);
       border-radius: 2px;
+
       padding: 1px 6px;
+
       margin-top: 0.5rem;
       margin-right: 0.35rem;
+
       letter-spacing: 0.04em;
     }
 
-    /* ── Blog ── */
+
+    /* ─────────────────────────────
+       Blog
+    ───────────────────────────── */
 
     .blog-list {
       display: flex;
@@ -272,9 +364,13 @@
     .blog-item {
       display: flex;
       align-items: baseline;
+
       gap: 1.5rem;
+
       padding: 1rem 0;
+
       border-top: 1px solid var(--border);
+
       text-decoration: none;
       color: inherit;
     }
@@ -286,7 +382,9 @@
     .blog-date {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.72rem;
+
       color: var(--muted);
+
       min-width: 55px;
       flex-shrink: 0;
     }
@@ -300,11 +398,16 @@
       color: var(--accent);
     }
 
-    /* ── Footer ── */
+
+    /* ─────────────────────────────
+       Footer
+    ───────────────────────────── */
 
     footer {
       padding: 2.5rem 0 3rem;
+
       border-top: 1px solid var(--border);
+
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -324,8 +427,10 @@
     .footer-links a {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.72rem;
+
       color: var(--muted);
       text-decoration: none;
+
       transition: color 0.15s;
     }
 
@@ -333,21 +438,78 @@
       color: var(--accent);
     }
 
-    /* ── Animation ── */
+
+    /* ─────────────────────────────
+       Animations
+    ───────────────────────────── */
 
     @keyframes fadeUp {
+
       to {
         opacity: 1;
         transform: translateY(0);
       }
+
     }
 
-    /* ── Mobile ── */
+    @keyframes heroFadeUp {
+
+      to {
+        opacity: 1;
+
+        transform:
+          translateX(-50%)
+          translateY(0);
+      }
+
+    }
+
+
+    /* ─────────────────────────────
+       Responsive
+    ───────────────────────────── */
+
+    @media (max-width: 850px) {
+
+      .hero {
+        width: 100%;
+        margin-left: 0;
+
+        grid-template-columns: 1fr;
+
+        gap: 1rem;
+
+        transform: translateY(12px);
+
+        animation: fadeUp 0.6s ease forwards 0.1s;
+      }
+
+      .torus-wrap {
+        width: min(320px, 80vw);
+        margin: 0 auto;
+      }
+
+    }
+
 
     @media (max-width: 520px) {
+
       nav {
         flex-direction: column;
         gap: 1rem;
+      }
+
+      .nav-links {
+        gap: 1.25rem;
+        flex-wrap: wrap;
+      }
+
+      .hero {
+        margin-bottom: 4rem;
+      }
+
+      .torus-wrap {
+        width: min(260px, 75vw);
       }
 
       footer {
@@ -360,71 +522,143 @@
         flex-direction: column;
         gap: 0.5rem;
       }
+
     }
+
+
+    /* Accessibility:
+       respect users who disabled animations */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .hero,
+      section {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+
+    }
+
   </style>
 </head>
 
+
 <body>
+
   <div class="container">
+
 
     <!-- Navigation -->
 
     <nav>
+
       <a class="nav-name" href="index.html">
+
         <img
           class="site-logo"
           src="logo.svg"
           alt="Logo Arthus Goujon"
         />
+
         <span>Arthus Goujon</span>
+
       </a>
 
+
       <ul class="nav-links">
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="resume.html">Resume</a></li>
-        <li><a href="#contact">Contact</a></li>
+
+        <li>
+          <a href="#blog">Blog</a>
+        </li>
+
+        <li>
+          <a href="#projects">Projects</a>
+        </li>
+
+        <li>
+          <a href="resume.html">Resume</a>
+        </li>
+
+        <li>
+          <a href="#contact">Contact</a>
+        </li>
+
       </ul>
+
     </nav>
 
 
-    <!-- Intro -->
+    <!-- Hero -->
 
-    <div class="intro">
+    <div class="hero">
 
-      <p>
-        Hello, I am <strong>Arthus Goujon</strong>.
-      </p>
 
-      <p>
-        I am a student at <em>École Polytechnique – Institut Polytechnique de Paris</em>
-        and <em>HEC Paris</em>, with a background in mathematics.
-        I am interested in <strong>applied mathematics</strong>,
-        <strong>machine learning</strong>, <strong>game theory</strong>,
-        and <strong>quantitative finance</strong>.
-      </p>
+      <!-- Intro -->
 
-      <p>
-        This website gathers some of my research projects and other work.
-      </p>
+      <div class="intro">
 
-      <div class="social-links">
-        <a
-          href="https://github.com/Arthus-HEC"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
+        <p>
+          Hello, I am <strong>Arthus Goujon</strong>.
+        </p>
 
-        <a
-          href="https://www.linkedin.com/in/arthus-goujon-07819b20b/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          LinkedIn
-        </a>
+        <p>
+
+          I am a student at
+          <em>École Polytechnique – Institut Polytechnique de Paris</em>
+          and <em>HEC Paris</em>, with a background in mathematics.
+
+          I am interested in
+          <strong>applied mathematics</strong>,
+          <strong>machine learning</strong>,
+          <strong>game theory</strong>,
+          and <strong>quantitative finance</strong>.
+
+        </p>
+
+        <p>
+          This website gathers some of my research projects and other work.
+        </p>
+
+
+        <div class="social-links">
+
+          <a
+            href="https://github.com/Arthus-HEC"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+
+
+          <a
+            href="https://www.linkedin.com/in/arthus-goujon-07819b20b/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+
+        </div>
+
       </div>
+
+
+      <!-- Torus -->
+
+      <div
+        class="torus-wrap"
+        aria-hidden="true"
+      >
+
+        <canvas
+          id="torus-canvas"
+          class="torus-canvas"
+        ></canvas>
+
+      </div>
+
 
     </div>
 
@@ -434,91 +668,156 @@
     <section id="projects">
 
       <div class="section-header">
-        <h2>Projects</h2>
+
+        <h2>
+          Projects
+        </h2>
+
       </div>
+
 
       <div class="projects-list">
 
 
         <!-- Scores as Infrastructures -->
 
-        <a class="project-item" href="market_design.html">
+        <a
+          class="project-item"
+          href="market_design.html"
+        >
 
           <div class="project-title">
             Scores as Infrastructures
           </div>
 
           <div class="project-desc">
-            A dynamic game-theoretic model of strategic scoring, reputation,
-            endogenous exposure and probabilistic auditing on digital platforms.
+
+            A dynamic game-theoretic model of strategic scoring,
+            reputation, endogenous exposure and probabilistic auditing
+            on digital platforms.
+
           </div>
 
-          <span class="project-tag">Game Theory</span>
-          <span class="project-tag">Market Design</span>
-          <span class="project-tag">Platform Economics</span>
+          <span class="project-tag">
+            Game Theory
+          </span>
+
+          <span class="project-tag">
+            Market Design
+          </span>
+
+          <span class="project-tag">
+            Platform Economics
+          </span>
 
         </a>
 
 
         <!-- AMM -->
 
-        <a class="project-item" href="amm.html">
+        <a
+          class="project-item"
+          href="amm.html"
+        >
 
           <div class="project-title">
             Optimal Routing in AMM-based Ecosystems
           </div>
 
           <div class="project-desc">
-            A convex optimization framework for optimal trade routing across
-            networks of Constant Function Market Makers, with dual
-            no-arbitrage certificates and numerical implementation in Python.
+
+            A convex optimization framework for optimal trade routing
+            across networks of Constant Function Market Makers,
+            with dual no-arbitrage certificates and numerical
+            implementation in Python.
+
           </div>
 
-          <span class="project-tag">Quantitative Finance</span>
-          <span class="project-tag">Convex Optimization</span>
-          <span class="project-tag">DeFi</span>
+          <span class="project-tag">
+            Quantitative Finance
+          </span>
+
+          <span class="project-tag">
+            Convex Optimization
+          </span>
+
+          <span class="project-tag">
+            DeFi
+          </span>
 
         </a>
 
 
         <!-- Mario Party -->
 
-        <a class="project-item" href="mario.html">
+        <a
+          class="project-item"
+          href="mario.html"
+        >
 
           <div class="project-title">
             Mario Party: Tricky Turntable
           </div>
 
           <div class="project-desc">
-            An adaptive-agent benchmark combining game theory, Bayesian
-            opponent modelling and reinforcement learning across more than
-            60 million simulated interactions.
+
+            An adaptive-agent benchmark combining game theory,
+            Bayesian opponent modelling and reinforcement learning
+            across more than 60 million simulated interactions.
+
           </div>
 
-          <span class="project-tag">Machine Learning</span>
-          <span class="project-tag">Bayesian Learning</span>
-          <span class="project-tag">Reinforcement Learning</span>
+          <span class="project-tag">
+            Machine Learning
+          </span>
+
+          <span class="project-tag">
+            Bayesian Learning
+          </span>
+
+          <span class="project-tag">
+            Reinforcement Learning
+          </span>
 
         </a>
 
-        <a class="project-item" href="turntable-transformer.html">
+
+        <!-- Transformer -->
+
+        <a
+          class="project-item"
+          href="turntable-transformer.html"
+        >
 
           <div class="project-title">
             Tiny Turntable Transformer
           </div>
 
           <div class="project-desc">
-            A small Transformer that learns hidden opponent behavior from recent
-            interactions and combines sequence predictions with a game-theoretic
-            best-response layer.
+
+            A small Transformer that learns hidden opponent behavior
+            from recent interactions and combines sequence predictions
+            with a game-theoretic best-response layer.
+
           </div>
 
-          <span class="project-tag">Deep Learning</span>
-          <span class="project-tag">Transformers</span>
-          <span class="project-tag">Game Theory</span>
+          <span class="project-tag">
+            Deep Learning
+          </span>
+
+          <span class="project-tag">
+            Transformers
+          </span>
+
+          <span class="project-tag">
+            Game Theory
+          </span>
 
         </a>
+
+
       </div>
+
     </section>
 
 
@@ -527,19 +826,36 @@
     <section id="blog">
 
       <div class="section-header">
-        <h2>Blog</h2>
-        <a class="view-all" href="blog.html">
+
+        <h2>
+          Blog
+        </h2>
+
+        <a
+          class="view-all"
+          href="blog.html"
+        >
           View all →
         </a>
+
       </div>
+
 
       <div class="blog-list">
 
-        <a class="blog-item" href="blog.html">
-          <span class="blog-date">2026</span>
+        <a
+          class="blog-item"
+          href="blog.html"
+        >
+
+          <span class="blog-date">
+            2026
+          </span>
+
           <span class="blog-title">
             Work in progress
           </span>
+
         </a>
 
       </div>
@@ -555,6 +871,7 @@
         Arthus Goujon
       </span>
 
+
       <div class="footer-links">
 
         <a
@@ -565,6 +882,7 @@
           GitHub
         </a>
 
+
         <a
           href="https://www.linkedin.com/in/arthus-goujon-07819b20b/"
           target="_blank"
@@ -572,6 +890,7 @@
         >
           LinkedIn
         </a>
+
 
         <a href="mailto:arthus.goujon@hec.edu">
           Email
@@ -581,6 +900,189 @@
 
     </footer>
 
+
   </div>
+
+
+  <!-- Three.js torus -->
+
+  <script type="module">
+
+    import * as THREE
+      from "https://unpkg.com/three@0.160.0/build/three.module.js";
+
+
+    const canvas =
+      document.getElementById("torus-canvas");
+
+
+    if (canvas) {
+
+
+      /* Scene */
+
+      const scene =
+        new THREE.Scene();
+
+
+      /* Camera */
+
+      const camera =
+        new THREE.PerspectiveCamera(
+          35,
+          1,
+          0.1,
+          100
+        );
+
+      camera.position.z = 4.8;
+
+
+      /* Renderer */
+
+      const renderer =
+        new THREE.WebGLRenderer({
+
+          canvas: canvas,
+
+          antialias: true,
+
+          alpha: true
+
+        });
+
+
+      renderer.setPixelRatio(
+        Math.min(
+          window.devicePixelRatio,
+          2
+        )
+      );
+
+
+      /* Torus geometry */
+
+      const geometry =
+        new THREE.TorusGeometry(
+          1.15,
+          0.34,
+          28,
+          120
+        );
+
+
+      /* Wireframe material */
+
+      const material =
+        new THREE.MeshBasicMaterial({
+
+          color: 0xc0392b,
+
+          wireframe: true,
+
+          transparent: true,
+
+          opacity: 0.72
+
+        });
+
+
+      /* Mesh */
+
+      const torus =
+        new THREE.Mesh(
+          geometry,
+          material
+        );
+
+
+      torus.rotation.x = 0.95;
+      torus.rotation.y = 0.35;
+      torus.rotation.z = -0.15;
+
+
+      scene.add(torus);
+
+
+      /* Responsive renderer */
+
+      function resizeRenderer() {
+
+        const wrapper =
+          canvas.parentElement;
+
+        const width =
+          wrapper.clientWidth;
+
+        const height =
+          wrapper.clientHeight;
+
+
+        renderer.setSize(
+          width,
+          height,
+          false
+        );
+
+
+        camera.aspect =
+          width / height;
+
+
+        camera.updateProjectionMatrix();
+
+      }
+
+
+      resizeRenderer();
+
+
+      window.addEventListener(
+        "resize",
+        resizeRenderer
+      );
+
+
+      /* Respect reduced motion */
+
+      const reducedMotion =
+        window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        );
+
+
+      /* Animation */
+
+      function animate() {
+
+        if (!reducedMotion.matches) {
+
+          torus.rotation.x += 0.0022;
+          torus.rotation.y += 0.0035;
+          torus.rotation.z += 0.0008;
+
+        }
+
+
+        renderer.render(
+          scene,
+          camera
+        );
+
+
+        requestAnimationFrame(
+          animate
+        );
+
+      }
+
+
+      animate();
+
+    }
+
+  </script>
+
+
 </body>
 </html>
