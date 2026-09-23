@@ -16,14 +16,17 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Arthus Goujon" />
   <meta property="og:title" content="Arthus Goujon" />
+
   <meta
     property="og:description"
     content="Applied mathematics, machine learning, game theory and quantitative finance."
   />
+
   <meta property="og:url" content="https://arthusgoujon.xyz/" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Arthus Goujon" />
+
   <meta
     name="twitter:description"
     content="Applied mathematics, machine learning, game theory and quantitative finance."
@@ -32,6 +35,7 @@
   <link rel="icon" href="logo.svg" type="image/svg+xml" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+
   <link
     href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet"
@@ -40,8 +44,7 @@
   <script type="importmap">
     {
       "imports": {
-        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
       }
     }
   </script>
@@ -185,6 +188,7 @@
       text-decoration: none;
       border-bottom: 1px solid var(--border);
       padding-bottom: 1px;
+
       transition:
         color 0.15s,
         border-color 0.15s;
@@ -196,10 +200,10 @@
     }
 
     /* ─────────────────────────────
-       Random topological object
+       Hero visual
     ───────────────────────────── */
 
-    .torus-wrap {
+    .hero-visual {
       position: relative;
       width: 100%;
       aspect-ratio: 1 / 1;
@@ -214,11 +218,13 @@
       pointer-events: none;
     }
 
-    .torus-canvas {
+    .hero-canvas {
       position: absolute;
       inset: 0;
+
       width: 100%;
       height: 100%;
+
       display: block;
     }
 
@@ -272,7 +278,7 @@
     }
 
     /* ─────────────────────────────
-       Projects layout
+       Projects
     ───────────────────────────── */
 
     #projects {
@@ -285,6 +291,7 @@
 
     .projects-shell {
       display: grid;
+
       grid-template-columns:
         minmax(0, 760px)
         minmax(210px, 1fr);
@@ -340,8 +347,10 @@
 
     .project-tag {
       display: inline-block;
+
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.65rem;
+
       color: var(--muted);
 
       border: 1px solid var(--border);
@@ -356,7 +365,7 @@
     }
 
     /* ─────────────────────────────
-       Projects visualization
+       Project visualization
     ───────────────────────────── */
 
     .project-viz-column {
@@ -403,8 +412,6 @@
       font-size: 0.68rem;
       letter-spacing: 0.03em;
       color: var(--muted);
-
-      transition: opacity 0.15s;
     }
 
     /* ─────────────────────────────
@@ -508,7 +515,10 @@
 
     @media (max-width: 900px) {
       .projects-shell {
-        grid-template-columns: minmax(0, 1fr) 210px;
+        grid-template-columns:
+          minmax(0, 1fr)
+          210px;
+
         gap: 2.5rem;
       }
     }
@@ -519,7 +529,7 @@
         gap: 1rem;
       }
 
-      .torus-wrap {
+      .hero-visual {
         width: min(320px, 80vw);
         margin: 0 auto;
       }
@@ -560,7 +570,7 @@
         margin-bottom: 4rem;
       }
 
-      .torus-wrap {
+      .hero-visual {
         width: min(260px, 75vw);
       }
 
@@ -598,21 +608,53 @@
     <!-- Navigation -->
 
     <nav>
-      <a class="nav-name" href="index.html">
+
+      <a
+        class="nav-name"
+        href="index.html"
+      >
+
         <img
           class="site-logo"
           src="logo.svg"
           alt="Logo Arthus Goujon"
         />
-        <span>Arthus Goujon</span>
+
+        <span>
+          Arthus Goujon
+        </span>
+
       </a>
 
+
       <ul class="nav-links">
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="resume.html">Resume</a></li>
-        <li><a href="#contact">Contact</a></li>
+
+        <li>
+          <a href="#blog">
+            Blog
+          </a>
+        </li>
+
+        <li>
+          <a href="#projects">
+            Projects
+          </a>
+        </li>
+
+        <li>
+          <a href="resume.html">
+            Resume
+          </a>
+        </li>
+
+        <li>
+          <a href="#contact">
+            Contact
+          </a>
+        </li>
+
       </ul>
+
     </nav>
 
 
@@ -621,6 +663,7 @@
     <div class="hero">
 
       <div class="intro">
+
         <p>
           Hello, I am <strong>Arthus Goujon</strong>.
         </p>
@@ -640,6 +683,7 @@
         </p>
 
         <div class="social-links">
+
           <a
             href="https://github.com/Arthus-HEC"
             target="_blank"
@@ -655,17 +699,24 @@
           >
             LinkedIn
           </a>
+
         </div>
+
       </div>
 
+
+      <!-- Random Torus / Neural Network -->
+
       <div
-        class="torus-wrap"
+        class="hero-visual"
         aria-hidden="true"
       >
+
         <canvas
-          id="torus-canvas"
-          class="torus-canvas"
+          id="hero-canvas"
+          class="hero-canvas"
         ></canvas>
+
       </div>
 
     </div>
@@ -676,8 +727,11 @@
     <section id="projects">
 
       <div class="section-header">
-        <h2>Projects</h2>
+        <h2>
+          Projects
+        </h2>
       </div>
+
 
       <div class="projects-shell">
 
@@ -686,11 +740,14 @@
           id="projects-list"
         >
 
+          <!-- Scores as Infrastructures -->
+
           <a
             class="project-item"
             href="market_design.html"
             data-viz="market"
           >
+
             <div class="project-title">
               Scores as Infrastructures
             </div>
@@ -701,17 +758,29 @@
               on digital platforms.
             </div>
 
-            <span class="project-tag">Game Theory</span>
-            <span class="project-tag">Market Design</span>
-            <span class="project-tag">Platform Economics</span>
+            <span class="project-tag">
+              Game Theory
+            </span>
+
+            <span class="project-tag">
+              Market Design
+            </span>
+
+            <span class="project-tag">
+              Platform Economics
+            </span>
+
           </a>
 
+
+          <!-- AMM -->
 
           <a
             class="project-item"
             href="amm.html"
             data-viz="amm"
           >
+
             <div class="project-title">
               Optimal Routing in AMM-based Ecosystems
             </div>
@@ -723,17 +792,29 @@
               implementation in Python.
             </div>
 
-            <span class="project-tag">Quantitative Finance</span>
-            <span class="project-tag">Convex Optimization</span>
-            <span class="project-tag">DeFi</span>
+            <span class="project-tag">
+              Quantitative Finance
+            </span>
+
+            <span class="project-tag">
+              Convex Optimization
+            </span>
+
+            <span class="project-tag">
+              DeFi
+            </span>
+
           </a>
 
+
+          <!-- Mario Party -->
 
           <a
             class="project-item"
             href="mario.html"
             data-viz="mario"
           >
+
             <div class="project-title">
               Mario Party: Tricky Turntable
             </div>
@@ -744,17 +825,29 @@
               across more than 60 million simulated interactions.
             </div>
 
-            <span class="project-tag">Machine Learning</span>
-            <span class="project-tag">Bayesian Learning</span>
-            <span class="project-tag">Reinforcement Learning</span>
+            <span class="project-tag">
+              Machine Learning
+            </span>
+
+            <span class="project-tag">
+              Bayesian Learning
+            </span>
+
+            <span class="project-tag">
+              Reinforcement Learning
+            </span>
+
           </a>
 
+
+          <!-- Transformer -->
 
           <a
             class="project-item"
             href="turntable-transformer.html"
             data-viz="transformer"
           >
+
             <div class="project-title">
               Tiny Turntable Transformer
             </div>
@@ -765,25 +858,40 @@
               with a game-theoretic best-response layer.
             </div>
 
-            <span class="project-tag">Deep Learning</span>
-            <span class="project-tag">Transformers</span>
-            <span class="project-tag">Game Theory</span>
+            <span class="project-tag">
+              Deep Learning
+            </span>
+
+            <span class="project-tag">
+              Transformers
+            </span>
+
+            <span class="project-tag">
+              Game Theory
+            </span>
+
           </a>
 
         </div>
 
 
-        <!-- Project visualization -->
+        <!-- Contextual project visualization -->
 
         <aside
           class="project-viz-column"
           aria-hidden="true"
         >
+
           <div class="project-viz">
-            <canvas id="project-viz-canvas"></canvas>
+
+            <canvas
+              id="project-viz-canvas"
+            ></canvas>
+
           </div>
 
           <div class="project-viz-meta">
+
             <div class="project-viz-kicker">
               project / visual
             </div>
@@ -794,7 +902,9 @@
             >
               Scores as Infrastructures
             </div>
+
           </div>
+
         </aside>
 
       </div>
@@ -807,7 +917,10 @@
     <section id="blog">
 
       <div class="section-header">
-        <h2>Blog</h2>
+
+        <h2>
+          Blog
+        </h2>
 
         <a
           class="view-all"
@@ -815,7 +928,9 @@
         >
           View all →
         </a>
+
       </div>
+
 
       <div class="blog-list">
 
@@ -823,6 +938,7 @@
           class="blog-item"
           href="blog.html"
         >
+
           <span class="blog-date">
             2026
           </span>
@@ -830,6 +946,7 @@
           <span class="blog-title">
             Work in progress
           </span>
+
         </a>
 
       </div>
@@ -844,6 +961,7 @@
       <span class="footer-name">
         Arthus Goujon
       </span>
+
 
       <div class="footer-links">
 
@@ -863,7 +981,9 @@
           LinkedIn
         </a>
 
-        <a href="mailto:arthus.goujon@hec.edu">
+        <a
+          href="mailto:arthus.goujon@hec.edu"
+        >
           Email
         </a>
 
@@ -874,19 +994,19 @@
   </div>
 
 
-  <!-- Random topological object -->
+  <!-- ─────────────────────────────
+       Hero: random Torus / Neural Network
+  ───────────────────────────── -->
 
   <script type="module">
 
     import * as THREE from "three";
 
-    import {
-      ParametricGeometry
-    } from "three/addons/geometries/ParametricGeometry.js";
-
 
     const canvas =
-      document.getElementById("torus-canvas");
+      document.getElementById(
+        "hero-canvas"
+      );
 
 
     if (canvas) {
@@ -904,7 +1024,8 @@
         );
 
 
-      camera.position.z = 6.2;
+      camera.position.z =
+        6.4;
 
 
       const renderer =
@@ -929,291 +1050,730 @@
       );
 
 
-      /* ───────── Torus ───────── */
-
-      function createTorus() {
-
-        return new THREE.TorusGeometry(
-          1.1,
-          0.34,
-          30,
-          120
+      const reducedMotion =
+        window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
         );
 
-      }
+
+      const accentColor =
+        0xc0392b;
 
 
-      /* ───────── Möbius ───────── */
+      const mutedColor =
+        0x7a756a;
 
-      function mobius(
-        u,
-        v,
-        target
+
+      const backgroundColor =
+        0xf7f5f0;
+
+
+      /* ─────────────────────────────
+         Fit any object into the scene
+      ───────────────────────────── */
+
+      function fitObject(
+        object,
+        targetRadius = 1.42
       ) {
 
-        const angle =
-          u * Math.PI * 2;
-
-
-        const width =
-          (v - 0.5) * 0.85;
-
-
-        const x =
-          (
-            1 +
-            width *
-            Math.cos(angle / 2)
-          )
-          *
-          Math.cos(angle);
-
-
-        const y =
-          (
-            1 +
-            width *
-            Math.cos(angle / 2)
-          )
-          *
-          Math.sin(angle);
-
-
-        const z =
-          width *
-          Math.sin(angle / 2);
-
-
-        target.set(
-          x,
-          y,
-          z
+        object.updateMatrixWorld(
+          true
         );
 
-      }
 
-
-      function createMobius() {
-
-        return new ParametricGeometry(
-          mobius,
-          120,
-          24
-        );
-
-      }
-
-
-      /* ───────── Klein bottle ───────── */
-
-      function klein(
-        v,
-        u,
-        target
-      ) {
-
-        u *= Math.PI;
-
-        v *=
-          2 *
-          Math.PI;
-
-
-        u *= 2;
-
-
-        let x;
-
-        let z;
-
-
-        if (
-          u < Math.PI
-        ) {
-
-          x =
-            3 *
-            Math.cos(u) *
-            (
-              1 +
-              Math.sin(u)
-            )
-            +
-            (
-              2 *
-              (
-                1 -
-                Math.cos(u) / 2
-              )
-            )
-            *
-            Math.cos(u)
-            *
-            Math.cos(v);
-
-
-          z =
-            -8 *
-            Math.sin(u)
-            -
-            2 *
-            (
-              1 -
-              Math.cos(u) / 2
-            )
-            *
-            Math.sin(u)
-            *
-            Math.cos(v);
-
-        } else {
-
-          x =
-            3 *
-            Math.cos(u) *
-            (
-              1 +
-              Math.sin(u)
-            )
-            +
-            2 *
-            (
-              1 -
-              Math.cos(u) / 2
-            )
-            *
-            Math.cos(
-              v +
-              Math.PI
+        const box =
+          new THREE.Box3()
+            .setFromObject(
+              object
             );
 
 
-          z =
-            -8 *
-            Math.sin(u);
+        const center =
+          box.getCenter(
+            new THREE.Vector3()
+          );
+
+
+        const sphere =
+          box.getBoundingSphere(
+            new THREE.Sphere()
+          );
+
+
+        object.position.sub(
+          center
+        );
+
+
+        if (
+          sphere.radius > 0
+        ) {
+
+          const scale =
+            targetRadius /
+            sphere.radius;
+
+
+          object.scale.setScalar(
+            scale
+          );
 
         }
 
-
-        const y =
-          -2 *
-          (
-            1 -
-            Math.cos(u) / 2
-          )
-          *
-          Math.sin(v);
-
-
-        target.set(
-          x,
-          y,
-          z
-        );
-
       }
 
 
-      function createKleinBottle() {
+      /* ─────────────────────────────
+         Torus
+      ───────────────────────────── */
 
-        return new ParametricGeometry(
-          klein,
-          100,
-          28
+      function createTorus() {
+
+        const group =
+          new THREE.Group();
+
+
+        const geometry =
+          new THREE.TorusGeometry(
+            1.1,
+            0.34,
+            30,
+            120
+          );
+
+
+        const material =
+          new THREE.MeshBasicMaterial({
+            color: accentColor,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.72,
+            side: THREE.DoubleSide
+          });
+
+
+        const torus =
+          new THREE.Mesh(
+            geometry,
+            material
+          );
+
+
+        torus.rotation.x =
+          0.8;
+
+
+        torus.rotation.y =
+          0.35;
+
+
+        torus.rotation.z =
+          -0.15;
+
+
+        group.add(
+          torus
         );
 
-      }
 
+        return {
 
-      /* ───────── Random choice ───────── */
-
-      const availableObjects = [
-        {
           name: "Torus",
-          create: createTorus
-        },
-        {
-          name: "Mobius Strip",
-          create: createMobius
-        },
-        {
-          name: "Klein Bottle",
-          create: createKleinBottle
+
+          object: group,
+
+          update() {
+
+            if (
+              reducedMotion.matches
+            ) {
+              return;
+            }
+
+
+            torus.rotation.x +=
+              0.0022;
+
+
+            torus.rotation.y +=
+              0.0035;
+
+
+            torus.rotation.z +=
+              0.0008;
+
+          }
+
+        };
+
+      }
+
+
+      /* ─────────────────────────────
+         Multilayer neural network
+      ───────────────────────────── */
+
+      function createNeuralNetwork() {
+
+        const group =
+          new THREE.Group();
+
+
+        /*
+         * 4 → 6 → 5 → 3
+         */
+
+        const layers = [
+          4,
+          6,
+          5,
+          3
+        ];
+
+
+        const xPositions = [
+          -2.25,
+          -0.75,
+          0.75,
+          2.25
+        ];
+
+
+        const layerNodes = [];
+
+
+        /* Node materials */
+
+        const nodeOuterMaterial =
+          new THREE.MeshBasicMaterial({
+            color: accentColor,
+            transparent: true,
+            opacity: 0.82
+          });
+
+
+        const nodeInnerMaterial =
+          new THREE.MeshBasicMaterial({
+            color: backgroundColor
+          });
+
+
+        const outerGeometry =
+          new THREE.SphereGeometry(
+            0.13,
+            18,
+            18
+          );
+
+
+        const innerGeometry =
+          new THREE.SphereGeometry(
+            0.085,
+            16,
+            16
+          );
+
+
+        /* Lines */
+
+        const normalLineMaterial =
+          new THREE.LineBasicMaterial({
+            color: mutedColor,
+            transparent: true,
+            opacity: 0.21
+          });
+
+
+        const strongLineMaterial =
+          new THREE.LineBasicMaterial({
+            color: accentColor,
+            transparent: true,
+            opacity: 0.18
+          });
+
+
+        const animatedNodes = [];
+
+
+        /* Create layers */
+
+        layers.forEach(
+          (
+            count,
+            layerIndex
+          ) => {
+
+            const nodes =
+              [];
+
+
+            for (
+              let i = 0;
+              i < count;
+              i++
+            ) {
+
+              const y =
+                count === 1
+                  ? 0
+                  : THREE.MathUtils.lerp(
+                      1.6,
+                      -1.6,
+                      i /
+                      (
+                        count -
+                        1
+                      )
+                    );
+
+
+              const node =
+                new THREE.Group();
+
+
+              const outer =
+                new THREE.Mesh(
+                  outerGeometry,
+                  nodeOuterMaterial
+                );
+
+
+              const inner =
+                new THREE.Mesh(
+                  innerGeometry,
+                  nodeInnerMaterial
+                );
+
+
+              node.add(
+                outer
+              );
+
+
+              node.add(
+                inner
+              );
+
+
+              node.position.set(
+                xPositions[
+                  layerIndex
+                ],
+                y,
+                0
+              );
+
+
+              group.add(
+                node
+              );
+
+
+              nodes.push(
+                node
+              );
+
+
+              animatedNodes.push({
+
+                node,
+
+                phase:
+                  layerIndex * 0.85 +
+                  i * 0.73
+
+              });
+
+            }
+
+
+            layerNodes.push(
+              nodes
+            );
+
+          }
+        );
+
+
+        /* ─────────────────────────────
+           Connections
+        ───────────────────────────── */
+
+        const connections =
+          [];
+
+
+        for (
+          let layerIndex = 0;
+          layerIndex <
+          layerNodes.length - 1;
+          layerIndex++
+        ) {
+
+          const current =
+            layerNodes[
+              layerIndex
+            ];
+
+
+          const next =
+            layerNodes[
+              layerIndex + 1
+            ];
+
+
+          current.forEach(
+            (
+              startNode,
+              startIndex
+            ) => {
+
+              next.forEach(
+                (
+                  endNode,
+                  endIndex
+                ) => {
+
+                  const start =
+                    startNode
+                      .position
+                      .clone();
+
+
+                  const end =
+                    endNode
+                      .position
+                      .clone();
+
+
+                  const lineGeometry =
+                    new THREE.BufferGeometry()
+                      .setFromPoints([
+                        start,
+                        end
+                      ]);
+
+
+                  const stronger =
+                    (
+                      startIndex +
+                      endIndex +
+                      layerIndex
+                    ) %
+                    5 ===
+                    0;
+
+
+                  const line =
+                    new THREE.Line(
+                      lineGeometry,
+                      stronger
+                        ? strongLineMaterial
+                        : normalLineMaterial
+                    );
+
+
+                  group.add(
+                    line
+                  );
+
+
+                  connections.push({
+                    start,
+                    end
+                  });
+
+                }
+              );
+
+            }
+          );
+
         }
+
+
+        /* ─────────────────────────────
+           Moving activation signals
+        ───────────────────────────── */
+
+        const signalGeometry =
+          new THREE.SphereGeometry(
+            0.055,
+            12,
+            12
+          );
+
+
+        const signalMaterial =
+          new THREE.MeshBasicMaterial({
+            color: accentColor,
+            transparent: true,
+            opacity: 0.92
+          });
+
+
+        const signals = [];
+
+
+        /*
+         * Select several connections
+         * distributed throughout the network.
+         */
+
+        const numberOfSignals =
+          10;
+
+
+        for (
+          let i = 0;
+          i < numberOfSignals;
+          i++
+        ) {
+
+          const connectionIndex =
+            Math.floor(
+              i *
+              connections.length /
+              numberOfSignals
+            );
+
+
+          const connection =
+            connections[
+              connectionIndex
+            ];
+
+
+          if (
+            !connection
+          ) {
+            continue;
+          }
+
+
+          const signal =
+            new THREE.Mesh(
+              signalGeometry,
+              signalMaterial
+            );
+
+
+          group.add(
+            signal
+          );
+
+
+          signals.push({
+
+            mesh:
+              signal,
+
+            start:
+              connection.start.clone(),
+
+            end:
+              connection.end.clone(),
+
+            speed:
+              0.10 +
+              i * 0.012,
+
+            offset:
+              i /
+              numberOfSignals
+
+          });
+
+        }
+
+
+        /*
+         * Slight perspective —
+         * enough to make it feel spatial
+         * without turning it into a gimmick.
+         */
+
+        group.rotation.x =
+          0.18;
+
+
+        group.rotation.y =
+          -0.32;
+
+
+        group.rotation.z =
+          0.015;
+
+
+        return {
+
+          name:
+            "Multilayer Neural Network",
+
+          object:
+            group,
+
+          update(
+            time
+          ) {
+
+            const t =
+              time *
+              0.001;
+
+
+            if (
+              !reducedMotion.matches
+            ) {
+
+              /*
+               * Very subtle global movement.
+               */
+
+              group.rotation.y =
+                -0.32 +
+                Math.sin(
+                  t *
+                  0.38
+                ) *
+                0.075;
+
+
+              group.rotation.x =
+                0.18 +
+                Math.cos(
+                  t *
+                  0.31
+                ) *
+                0.025;
+
+            }
+
+
+            /*
+             * Nodes breathe very slightly.
+             */
+
+            animatedNodes.forEach(
+              (
+                item,
+                index
+              ) => {
+
+                const pulse =
+                  1 +
+                  Math.sin(
+                    t *
+                    1.45 +
+                    item.phase +
+                    index *
+                    0.03
+                  ) *
+                  0.045;
+
+
+                item.node.scale.setScalar(
+                  pulse
+                );
+
+              }
+            );
+
+
+            /*
+             * Activation particles move
+             * from one layer to the next.
+             */
+
+            signals.forEach(
+              item => {
+
+                const progress =
+                  (
+                    t *
+                    item.speed +
+                    item.offset
+                  ) %
+                  1;
+
+
+                /*
+                 * Smooth movement instead of
+                 * perfectly constant velocity.
+                 */
+
+                const eased =
+                  progress *
+                  progress *
+                  (
+                    3 -
+                    2 *
+                    progress
+                  );
+
+
+                item.mesh
+                  .position
+                  .lerpVectors(
+                    item.start,
+                    item.end,
+                    eased
+                  );
+
+              }
+            );
+
+          }
+
+        };
+
+      }
+
+
+      /* ─────────────────────────────
+         50 / 50 random choice
+      ───────────────────────────── */
+
+      const factories = [
+        createTorus,
+        createNeuralNetwork
       ];
 
 
-      const chosenObject =
-        availableObjects[
+      const selectedFactory =
+        factories[
           Math.floor(
             Math.random() *
-            availableObjects.length
+            factories.length
           )
         ];
 
 
-      let geometry =
-        chosenObject.create();
+      const selected =
+        selectedFactory();
 
 
-      geometry.center();
-
-      geometry.computeBoundingSphere();
-
-
-      if (
-        geometry.boundingSphere
-      ) {
-
-        const desiredRadius =
-          1.35;
-
-
-        const scale =
-          desiredRadius /
-          geometry.boundingSphere.radius;
-
-
-        geometry.scale(
-          scale,
-          scale,
-          scale
-        );
-
-      }
-
-
-      const material =
-        new THREE.MeshBasicMaterial({
-          color: 0xc0392b,
-          wireframe: true,
-          transparent: true,
-          opacity: 0.72,
-          side: THREE.DoubleSide
-        });
-
-
-      const shape =
-        new THREE.Mesh(
-          geometry,
-          material
-        );
-
-
-      shape.rotation.x =
-        0.8;
-
-      shape.rotation.y =
-        0.35;
-
-      shape.rotation.z =
-        -0.15;
+      fitObject(
+        selected.object,
+        1.42
+      );
 
 
       scene.add(
-        shape
+        selected.object
       );
 
+
+      console.log(
+        "Hero visual:",
+        selected.name
+      );
+
+
+      /* ─────────────────────────────
+         Resize
+      ───────────────────────────── */
 
       function resizeRenderer() {
 
@@ -1223,6 +1783,7 @@
 
         const width =
           wrapper.clientWidth;
+
 
         const height =
           wrapper.clientHeight;
@@ -1236,7 +1797,8 @@
 
 
         camera.aspect =
-          width / height;
+          width /
+          height;
 
 
         camera.updateProjectionMatrix();
@@ -1253,28 +1815,17 @@
       );
 
 
-      const reducedMotion =
-        window.matchMedia(
-          "(prefers-reduced-motion: reduce)"
+      /* ─────────────────────────────
+         Render loop
+      ───────────────────────────── */
+
+      function animate(
+        time
+      ) {
+
+        selected.update(
+          time
         );
-
-
-      function animate() {
-
-        if (
-          !reducedMotion.matches
-        ) {
-
-          shape.rotation.x +=
-            0.0022;
-
-          shape.rotation.y +=
-            0.0035;
-
-          shape.rotation.z +=
-            0.0008;
-
-        }
 
 
         renderer.render(
@@ -1290,14 +1841,18 @@
       }
 
 
-      animate();
+      requestAnimationFrame(
+        animate
+      );
 
     }
 
   </script>
 
 
-  <!-- Interactive project visualizations -->
+  <!-- ─────────────────────────────
+       Interactive project visualizations
+  ───────────────────────────── -->
 
   <script>
 
@@ -1315,7 +1870,9 @@
 
 
       const ctx =
-        canvas.getContext("2d");
+        canvas.getContext(
+          "2d"
+        );
 
 
       const nameElement =
@@ -1340,25 +1897,33 @@
 
       const accent =
         styles
-          .getPropertyValue("--accent")
+          .getPropertyValue(
+            "--accent"
+          )
           .trim();
 
 
       const muted =
         styles
-          .getPropertyValue("--muted")
+          .getPropertyValue(
+            "--muted"
+          )
           .trim();
 
 
       const border =
         styles
-          .getPropertyValue("--border")
+          .getPropertyValue(
+            "--border"
+          )
           .trim();
 
 
       const background =
         styles
-          .getPropertyValue("--bg")
+          .getPropertyValue(
+            "--bg"
+          )
           .trim();
 
 
@@ -1399,15 +1964,27 @@
         performance.now();
 
 
-      let width = 0;
-      let height = 0;
-      let dpr = 1;
+      let width =
+        0;
 
+
+      let height =
+        0;
+
+
+      let dpr =
+        1;
+
+
+      /* ─────────────────────────────
+         Resize
+      ───────────────────────────── */
 
       function resize() {
 
         const rect =
-          canvas.getBoundingClientRect();
+          canvas
+            .getBoundingClientRect();
 
 
         dpr =
@@ -1427,13 +2004,15 @@
 
         canvas.width =
           Math.round(
-            width * dpr
+            width *
+            dpr
           );
 
 
         canvas.height =
           Math.round(
-            height * dpr
+            height *
+            dpr
           );
 
 
@@ -1458,6 +2037,10 @@
       );
 
 
+      /* ─────────────────────────────
+         Select visualization
+      ───────────────────────────── */
+
       function setMode(
         nextMode,
         activeItem = null
@@ -1468,7 +2051,9 @@
 
 
         nameElement.textContent =
-          names[nextMode];
+          names[
+            nextMode
+          ];
 
 
         projectItems.forEach(
@@ -1566,9 +2151,8 @@
 
 
       /* ─────────────────────────────
-         Helpers
+         Drawing helpers
       ───────────────────────────── */
-
 
       function clear() {
 
@@ -1594,28 +2178,36 @@
 
         ctx.save();
 
+
         ctx.globalAlpha =
           alpha;
+
 
         ctx.strokeStyle =
           color;
 
+
         ctx.lineWidth =
           lineWidth;
 
+
         ctx.beginPath();
+
 
         ctx.moveTo(
           x1,
           y1
         );
 
+
         ctx.lineTo(
           x2,
           y2
         );
 
+
         ctx.stroke();
+
 
         ctx.restore();
 
@@ -1634,17 +2226,22 @@
 
         ctx.save();
 
+
         ctx.globalAlpha =
           alpha;
 
+
         ctx.lineWidth =
           lineWidth;
+
 
         ctx.strokeStyle =
           stroke;
 
 
-        if (fill) {
+        if (
+          fill
+        ) {
 
           ctx.fillStyle =
             fill;
@@ -1654,21 +2251,28 @@
 
         ctx.beginPath();
 
+
         ctx.arc(
           x,
           y,
           r,
           0,
-          Math.PI * 2
+          Math.PI *
+          2
         );
 
 
-        if (fill) {
+        if (
+          fill
+        ) {
+
           ctx.fill();
+
         }
 
 
         ctx.stroke();
+
 
         ctx.restore();
 
@@ -1678,7 +2282,6 @@
       /* ─────────────────────────────
          Scores / network
       ───────────────────────────── */
-
 
       const networkNodes = [
         [0.18, 0.42],
@@ -1708,7 +2311,8 @@
       ) {
 
         const t =
-          time * 0.001;
+          time *
+          0.001;
 
 
         const points =
@@ -1720,8 +2324,10 @@
 
               const jitterX =
                 Math.sin(
-                  t * 0.7 +
-                  i * 1.9
+                  t *
+                  0.7 +
+                  i *
+                  1.9
                 ) *
                 width *
                 0.018;
@@ -1729,8 +2335,10 @@
 
               const jitterY =
                 Math.cos(
-                  t * 0.55 +
-                  i * 1.45
+                  t *
+                  0.55 +
+                  i *
+                  1.45
                 ) *
                 height *
                 0.018;
@@ -1738,12 +2346,12 @@
 
               return [
                 node[0] *
-                  width +
-                  jitterX,
+                width +
+                jitterX,
 
                 node[1] *
-                  height +
-                  jitterY
+                height +
+                jitterY
               ];
 
             }
@@ -1775,7 +2383,8 @@
                 0.5 +
                 0.5 *
                 Math.sin(
-                  t * 1.3 +
+                  t *
+                  1.3 +
                   i
                 )
               );
@@ -1803,7 +2412,8 @@
             const pulse =
               4.5 +
               Math.sin(
-                t * 1.4 +
+                t *
+                1.4 +
                 i
               ) *
               1.2;
@@ -1825,7 +2435,8 @@
 
         const phase =
           (
-            t * 0.17
+            t *
+            0.17
           ) %
           1;
 
@@ -1869,37 +2480,43 @@
 
 
       /* ─────────────────────────────
-         AMM routing
+         AMM
       ───────────────────────────── */
-
 
       function drawAMM(
         time
       ) {
 
         const t =
-          time * 0.001;
+          time *
+          0.001;
 
 
         const pad =
-          width * 0.12;
+          width *
+          0.12;
 
 
         const graphWidth =
           width -
-          pad * 2;
+          pad *
+          2;
 
 
         const graphHeight =
           height -
-          pad * 2;
+          pad *
+          2;
 
 
         line(
           pad,
-          height - pad,
-          width - pad,
-          height - pad,
+          height -
+          pad,
+          width -
+          pad,
+          height -
+          pad,
           muted,
           0.25
         );
@@ -1909,35 +2526,28 @@
           pad,
           pad,
           pad,
-          height - pad,
+          height -
+          pad,
           muted,
           0.25
         );
 
 
         const curves = [
-          {
-            scale: 0.78,
-            phase: 0
-          },
-          {
-            scale: 0.61,
-            phase: 0.5
-          },
-          {
-            scale: 0.47,
-            phase: 1
-          }
+          0.78,
+          0.61,
+          0.47
         ];
 
 
         curves.forEach(
           (
-            curve,
+            scale,
             curveIndex
           ) => {
 
             ctx.save();
+
 
             ctx.strokeStyle =
               curveIndex === 0
@@ -1969,7 +2579,8 @@
               const xNorm =
                 0.08 +
                 (
-                  i / 90
+                  i /
+                  90
                 ) *
                 0.88;
 
@@ -1977,7 +2588,7 @@
               const yNorm =
                 Math.min(
                   0.95,
-                  curve.scale /
+                  scale /
                   (
                     xNorm +
                     0.3
@@ -2022,6 +2633,7 @@
 
             ctx.stroke();
 
+
             ctx.restore();
 
           }
@@ -2030,7 +2642,8 @@
 
         const progress =
           (
-            t * 0.11
+            t *
+            0.11
           ) %
           1;
 
@@ -2076,89 +2689,30 @@
           1.2
         );
 
-
-        const nodes = [
-          [0.24, 0.76],
-          [0.54, 0.48],
-          [0.80, 0.70]
-        ];
-
-
-        nodes.forEach(
-          (
-            node,
-            i
-          ) => {
-
-            const x =
-              node[0] *
-              width;
-
-
-            const y =
-              node[1] *
-              height;
-
-
-            circle(
-              x,
-              y,
-              4,
-              accent,
-              background,
-              0.55
-            );
-
-
-            if (
-              i <
-              nodes.length - 1
-            ) {
-
-              const next =
-                nodes[
-                  i + 1
-                ];
-
-
-              line(
-                x,
-                y,
-                next[0] *
-                  width,
-                next[1] *
-                  height,
-                accent,
-                0.18
-              );
-
-            }
-
-          }
-        );
-
       }
 
 
       /* ─────────────────────────────
-         Mario / adaptive agents
+         Adaptive agents
       ───────────────────────────── */
-
 
       function drawMario(
         time
       ) {
 
         const t =
-          time * 0.001;
+          time *
+          0.001;
 
 
         const cx =
-          width / 2;
+          width /
+          2;
 
 
         const cy =
-          height / 2;
+          height /
+          2;
 
 
         const radius =
@@ -2172,7 +2726,8 @@
         circle(
           cx,
           cy,
-          radius * 0.28,
+          radius *
+          0.28,
           muted,
           null,
           0.24
@@ -2189,9 +2744,9 @@
             t *
             (
               0.23 +
-              i * 0.025
-            )
-            +
+              i *
+              0.025
+            ) +
             i *
             (
               Math.PI *
@@ -2202,13 +2757,17 @@
 
           const x =
             cx +
-            Math.cos(angle) *
+            Math.cos(
+              angle
+            ) *
             radius;
 
 
           const y =
             cy +
-            Math.sin(angle) *
+            Math.sin(
+              angle
+            ) *
             radius;
 
 
@@ -2226,8 +2785,10 @@
             5 +
             (
               Math.sin(
-                t * 1.8 +
-                i * 2
+                t *
+                1.8 +
+                i *
+                2
               ) +
               1
             ) *
@@ -2248,7 +2809,8 @@
 
 
         const innerAngle =
-          -t * 0.55;
+          -t *
+          0.55;
 
 
         const px =
@@ -2278,48 +2840,6 @@
           0.9
         );
 
-
-        for (
-          let i = 0;
-          i < 8;
-          i++
-        ) {
-
-          const angle =
-            i *
-            Math.PI /
-            4;
-
-
-          const inner =
-            radius *
-            0.38;
-
-
-          const outer =
-            radius *
-            0.48;
-
-
-          line(
-            cx +
-            Math.cos(angle) *
-            inner,
-            cy +
-            Math.sin(angle) *
-            inner,
-            cx +
-            Math.cos(angle) *
-            outer,
-            cy +
-            Math.sin(angle) *
-            outer,
-            muted,
-            0.18
-          );
-
-        }
-
       }
 
 
@@ -2327,13 +2847,13 @@
          Transformer attention
       ───────────────────────────── */
 
-
       function drawTransformer(
         time
       ) {
 
         const t =
-          time * 0.001;
+          time *
+          0.001;
 
 
         const n =
@@ -2357,7 +2877,8 @@
             maxSize -
             gap *
             (
-              n - 1
+              n -
+              1
             )
           ) /
           n;
@@ -2402,9 +2923,12 @@
               0.5 +
               0.5 *
               Math.sin(
-                t * 1.4 +
-                row * 0.7 +
-                col * 0.45
+                t *
+                1.4 +
+                row *
+                0.7 +
+                col *
+                0.45
               );
 
 
@@ -2414,8 +2938,7 @@
                 1 -
                 distance /
                 n
-              )
-              *
+              ) *
               (
                 0.25 +
                 0.75 *
@@ -2443,6 +2966,7 @@
 
             ctx.save();
 
+
             ctx.globalAlpha =
               0.05 +
               attention *
@@ -2465,6 +2989,7 @@
 
 
             ctx.save();
+
 
             ctx.globalAlpha =
               0.12;
@@ -2496,7 +3021,8 @@
         const active =
           Math.floor(
             (
-              t * 1.3
+              t *
+              1.3
             ) %
             n
           );
@@ -2510,7 +3036,8 @@
             cell +
             gap
           ) +
-          cell / 2,
+          cell /
+          2,
           startX +
           maxSize,
           startY +
@@ -2519,7 +3046,8 @@
             cell +
             gap
           ) +
-          cell / 2,
+          cell /
+          2,
           accent,
           0.23
         );
@@ -2530,7 +3058,6 @@
       /* ─────────────────────────────
          Main loop
       ───────────────────────────── */
-
 
       const reducedMotion =
         window.matchMedia(
