@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8" />
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Arthus Goujon</title>
 
@@ -17,87 +11,42 @@
     content="Arthus Goujon — student at École Polytechnique and HEC Paris, interested in applied mathematics, machine learning, game theory and quantitative finance."
   />
 
-  <link
-    rel="canonical"
-    href="https://arthusgoujon.xyz/"
-  />
+  <link rel="canonical" href="https://arthusgoujon.xyz/" />
 
-  <meta
-    property="og:type"
-    content="website"
-  />
-
-  <meta
-    property="og:site_name"
-    content="Arthus Goujon"
-  />
-
-  <meta
-    property="og:title"
-    content="Arthus Goujon"
-  />
-
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Arthus Goujon" />
+  <meta property="og:title" content="Arthus Goujon" />
   <meta
     property="og:description"
     content="Applied mathematics, machine learning, game theory and quantitative finance."
   />
+  <meta property="og:url" content="https://arthusgoujon.xyz/" />
 
-  <meta
-    property="og:url"
-    content="https://arthusgoujon.xyz/"
-  />
-
-  <meta
-    name="twitter:card"
-    content="summary"
-  />
-
-  <meta
-    name="twitter:title"
-    content="Arthus Goujon"
-  />
-
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Arthus Goujon" />
   <meta
     name="twitter:description"
     content="Applied mathematics, machine learning, game theory and quantitative finance."
   />
 
-  <link
-    rel="icon"
-    href="logo.svg"
-    type="image/svg+xml"
-  />
+  <link rel="icon" href="logo.svg" type="image/svg+xml" />
 
-
-  <!-- Fonts -->
-
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  />
-
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet"
   />
 
-
-  <!-- Three.js import map -->
-
   <script type="importmap">
-
     {
       "imports": {
         "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
         "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
       }
     }
-
   </script>
 
-
   <style>
-
     *,
     *::before,
     *::after {
@@ -106,1438 +55,844 @@
       padding: 0;
     }
 
-
     :root {
-
       --bg: #f7f5f0;
-
       --ink: #1a1814;
-
       --muted: #7a756a;
-
       --accent: #c0392b;
-
       --border: #e0dbd0;
-
       --max: 1040px;
-
     }
-
 
     html {
       font-size: 16px;
+      scroll-behavior: smooth;
     }
-
 
     body {
-
       background: var(--bg);
-
       color: var(--ink);
-
-      font-family:
-        'Lora',
-        Georgia,
-        serif;
-
+      font-family: 'Lora', Georgia, serif;
       line-height: 1.75;
-
       padding: 0 1.5rem;
-
       -webkit-font-smoothing: antialiased;
-
       overflow-x: hidden;
-
     }
-
-
-
-    /* ─────────────────────────────
-       Layout
-    ───────────────────────────── */
-
 
     .container {
-
       max-width: var(--max);
-
       margin: 0 auto;
-
     }
-
-
 
     /* ─────────────────────────────
        Navigation
     ───────────────────────────── */
 
-
     nav {
-
       display: flex;
-
       align-items: baseline;
-
       justify-content: space-between;
-
       padding: 2.5rem 0 2rem;
-
-      border-bottom:
-        1px solid var(--border);
-
+      border-bottom: 1px solid var(--border);
       margin-bottom: 4rem;
-
     }
-
 
     .nav-name {
-
       display: inline-flex;
-
       align-items: center;
-
       gap: 0.75rem;
-
-      font-family:
-        'JetBrains Mono',
-        monospace;
-
+      font-family: 'JetBrains Mono', monospace;
       font-size: 0.85rem;
-
       font-weight: 500;
-
       letter-spacing: 0.05em;
-
       text-decoration: none;
-
       color: var(--ink);
-
     }
-
 
     .site-logo {
-
       width: 1.45rem;
-
       height: auto;
-
       display: block;
-
     }
-
 
     .nav-links {
-
       display: flex;
-
       gap: 2rem;
-
       list-style: none;
-
     }
-
 
     .nav-links a {
-
-      font-family:
-        'JetBrains Mono',
-        monospace;
-
+      font-family: 'JetBrains Mono', monospace;
       font-size: 0.78rem;
-
       color: var(--muted);
-
       text-decoration: none;
-
       letter-spacing: 0.04em;
-
-      transition:
-        color 0.15s;
-
+      transition: color 0.15s;
     }
-
 
     .nav-links a:hover {
-
       color: var(--ink);
-
     }
-
-
 
     /* ─────────────────────────────
        Hero
     ───────────────────────────── */
 
-
     .hero {
-
       width: 100%;
-
-      margin-bottom: 4.5rem;
+      margin-bottom: 5rem;
 
       display: grid;
-
       grid-template-columns:
         minmax(0, 1.35fr)
         minmax(280px, 0.8fr);
 
       gap: 4rem;
-
       align-items: center;
 
       opacity: 0;
-
-      transform:
-        translateY(12px);
-
-      animation:
-        fadeUp
-        0.6s
-        ease
-        forwards
-        0.1s;
-
+      transform: translateY(12px);
+      animation: fadeUp 0.6s ease forwards 0.1s;
     }
-
-
-
-    /* ─────────────────────────────
-       Intro
-    ───────────────────────────── */
-
 
     .intro p {
-
       font-size: 1.05rem;
-
       color: var(--ink);
-
       margin-bottom: 1rem;
-
       max-width: 560px;
-
     }
-
 
     .intro p:first-child {
-
       font-size: 1.2rem;
-
     }
-
 
     .intro p em {
-
       color: var(--muted);
-
       font-style: italic;
-
     }
-
-
-
-    /* ─────────────────────────────
-       Social links
-    ───────────────────────────── */
-
 
     .social-links {
-
       display: flex;
-
       gap: 1.25rem;
-
       margin-top: 1.5rem;
-
       flex-wrap: wrap;
-
     }
 
-
     .social-links a {
-
-      font-family:
-        'JetBrains Mono',
-        monospace;
-
+      font-family: 'JetBrains Mono', monospace;
       font-size: 0.75rem;
-
       color: var(--muted);
-
       text-decoration: none;
-
-      border-bottom:
-        1px solid var(--border);
-
+      border-bottom: 1px solid var(--border);
       padding-bottom: 1px;
-
       transition:
         color 0.15s,
         border-color 0.15s;
-
     }
-
 
     .social-links a:hover {
-
       color: var(--accent);
-
       border-color: var(--accent);
-
     }
 
-
-
     /* ─────────────────────────────
-       Topological object
+       Random topological object
     ───────────────────────────── */
 
-
     .torus-wrap {
-
       position: relative;
-
       width: 100%;
-
       aspect-ratio: 1 / 1;
 
       display: flex;
-
       align-items: center;
-
       justify-content: center;
 
       min-width: 0;
 
       user-select: none;
-
       pointer-events: none;
-
     }
-
 
     .torus-canvas {
-
       position: absolute;
-
       inset: 0;
-
       width: 100%;
-
       height: 100%;
-
       display: block;
-
     }
-
-
 
     /* ─────────────────────────────
        Sections
     ───────────────────────────── */
 
-
     section {
-
-      max-width: 760px;
-
-      margin-right: auto;
-
-      margin-bottom: 4rem;
+      margin-bottom: 4.5rem;
 
       opacity: 0;
-
-      transform:
-        translateY(12px);
-
-      animation:
-        fadeUp
-        0.6s
-        ease
-        forwards;
-
+      transform: translateY(12px);
+      animation: fadeUp 0.6s ease forwards;
     }
-
 
     section:nth-of-type(1) {
-
       animation-delay: 0.2s;
-
     }
-
 
     section:nth-of-type(2) {
-
       animation-delay: 0.35s;
-
     }
-
 
     .section-header {
-
       display: flex;
-
       justify-content: space-between;
-
       align-items: baseline;
-
       margin-bottom: 1.75rem;
-
     }
-
 
     h2 {
-
-      font-family:
-        'Lora',
-        serif;
-
+      font-family: 'Lora', serif;
       font-size: 0.8rem;
-
       font-weight: 600;
-
       letter-spacing: 0.12em;
-
       text-transform: uppercase;
-
       color: var(--muted);
-
     }
-
 
     .view-all {
-
-      font-family:
-        'JetBrains Mono',
-        monospace;
-
+      font-family: 'JetBrains Mono', monospace;
       font-size: 0.72rem;
-
       color: var(--muted);
-
       text-decoration: none;
-
       letter-spacing: 0.03em;
-
-      transition:
-        color 0.15s;
-
+      transition: color 0.15s;
     }
-
 
     .view-all:hover {
-
       color: var(--accent);
-
     }
-
-
 
     /* ─────────────────────────────
-       Projects
+       Projects layout
     ───────────────────────────── */
 
-
-    .projects-list {
-
-      display: flex;
-
-      flex-direction: column;
-
-      gap: 0;
-
+    #projects {
+      width: 100%;
     }
 
+    #projects .section-header {
+      max-width: 760px;
+    }
+
+    .projects-shell {
+      display: grid;
+      grid-template-columns:
+        minmax(0, 760px)
+        minmax(210px, 1fr);
+
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
 
     .project-item {
-
       display: block;
+      position: relative;
 
       padding: 1.25rem 0;
 
-      border-top:
-        1px solid var(--border);
+      border-top: 1px solid var(--border);
 
       text-decoration: none;
-
       color: inherit;
 
       transition:
-        background 0.15s;
-
+        background 0.15s,
+        transform 0.15s;
     }
-
 
     .project-item:last-child {
-
-      border-bottom:
-        1px solid var(--border);
-
+      border-bottom: 1px solid var(--border);
     }
 
-
-    .project-item:hover
-    .project-title {
-
+    .project-item:hover .project-title,
+    .project-item.is-active .project-title {
       color: var(--accent);
-
     }
-
 
     .project-title {
-
-      font-family:
-        'Lora',
-        serif;
-
+      font-family: 'Lora', serif;
       font-size: 1rem;
-
       font-weight: 600;
-
       margin-bottom: 0.3rem;
-
-      transition:
-        color 0.15s;
-
+      transition: color 0.15s;
     }
-
 
     .project-desc {
-
       font-size: 0.88rem;
-
       color: var(--muted);
-
       line-height: 1.5;
-
     }
 
-
     .project-tag {
-
       display: inline-block;
-
-      font-family:
-        'JetBrains Mono',
-        monospace;
-
+      font-family: 'JetBrains Mono', monospace;
       font-size: 0.65rem;
-
       color: var(--muted);
 
-      border:
-        1px solid var(--border);
-
+      border: 1px solid var(--border);
       border-radius: 2px;
 
-      padding:
-        1px 6px;
+      padding: 1px 6px;
 
       margin-top: 0.5rem;
-
       margin-right: 0.35rem;
 
       letter-spacing: 0.04em;
-
     }
 
+    /* ─────────────────────────────
+       Projects visualization
+    ───────────────────────────── */
 
+    .project-viz-column {
+      position: sticky;
+      top: 2rem;
+    }
+
+    .project-viz {
+      position: relative;
+
+      width: 100%;
+      aspect-ratio: 1 / 1;
+
+      min-height: 230px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #project-viz-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .project-viz-meta {
+      margin-top: 0.8rem;
+      min-height: 2.8rem;
+    }
+
+    .project-viz-kicker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--border);
+    }
+
+    .project-viz-name {
+      margin-top: 0.15rem;
+
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.03em;
+      color: var(--muted);
+
+      transition: opacity 0.15s;
+    }
 
     /* ─────────────────────────────
        Blog
     ───────────────────────────── */
 
-
-    .blog-list {
-
-      display: flex;
-
-      flex-direction: column;
-
+    #blog {
+      max-width: 760px;
+      margin-right: auto;
     }
 
+    .blog-list {
+      display: flex;
+      flex-direction: column;
+    }
 
     .blog-item {
-
       display: flex;
-
       align-items: baseline;
-
       gap: 1.5rem;
 
       padding: 1rem 0;
 
-      border-top:
-        1px solid var(--border);
+      border-top: 1px solid var(--border);
 
       text-decoration: none;
-
       color: inherit;
-
     }
-
 
     .blog-item:last-child {
-
-      border-bottom:
-        1px solid var(--border);
-
+      border-bottom: 1px solid var(--border);
     }
-
 
     .blog-date {
-
-      font-family:
-        'JetBrains Mono',
-        monospace;
-
+      font-family: 'JetBrains Mono', monospace;
       font-size: 0.72rem;
-
       color: var(--muted);
-
       min-width: 55px;
-
       flex-shrink: 0;
-
     }
 
-
     .blog-title {
-
       font-size: 0.95rem;
-
-      transition:
-        color 0.15s;
-
+      transition: color 0.15s;
     }
 
-
-    .blog-item:hover
-    .blog-title {
-
+    .blog-item:hover .blog-title {
       color: var(--accent);
-
     }
-
-
 
     /* ─────────────────────────────
        Footer
     ───────────────────────────── */
 
-
     footer {
-
-      padding:
-        2.5rem 0 3rem;
-
-      border-top:
-        1px solid var(--border);
+      padding: 2.5rem 0 3rem;
+      border-top: 1px solid var(--border);
 
       display: flex;
-
       justify-content: space-between;
-
       align-items: center;
-
     }
-
 
     .footer-name {
-
-      font-family:
-        'JetBrains Mono',
-        monospace;
-
+      font-family: 'JetBrains Mono', monospace;
       font-size: 0.75rem;
-
       color: var(--muted);
-
     }
-
 
     .footer-links {
-
       display: flex;
-
       gap: 1.5rem;
-
     }
-
 
     .footer-links a {
-
-      font-family:
-        'JetBrains Mono',
-        monospace;
-
+      font-family: 'JetBrains Mono', monospace;
       font-size: 0.72rem;
-
       color: var(--muted);
-
       text-decoration: none;
-
-      transition:
-        color 0.15s;
-
+      transition: color 0.15s;
     }
-
 
     .footer-links a:hover {
-
       color: var(--accent);
-
     }
-
-
 
     /* ─────────────────────────────
        Animation
     ───────────────────────────── */
 
-
     @keyframes fadeUp {
-
       to {
-
         opacity: 1;
-
-        transform:
-          translateY(0);
-
+        transform: translateY(0);
       }
-
     }
-
-
 
     /* ─────────────────────────────
        Responsive
     ───────────────────────────── */
 
-
-    @media
-    (max-width: 850px) {
-
-
-      .hero {
-
-        grid-template-columns:
-          1fr;
-
-        gap: 1rem;
-
+    @media (max-width: 900px) {
+      .projects-shell {
+        grid-template-columns: minmax(0, 1fr) 210px;
+        gap: 2.5rem;
       }
-
-
-      .torus-wrap {
-
-        width:
-          min(
-            320px,
-            80vw
-          );
-
-        margin:
-          0 auto;
-
-      }
-
-
-      section {
-
-        max-width: 100%;
-
-      }
-
     }
 
-
-
-    @media
-    (max-width: 520px) {
-
-
-      nav {
-
-        flex-direction:
-          column;
-
+    @media (max-width: 760px) {
+      .hero {
+        grid-template-columns: 1fr;
         gap: 1rem;
-
       }
 
+      .torus-wrap {
+        width: min(320px, 80vw);
+        margin: 0 auto;
+      }
+
+      .projects-shell {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .project-viz-column {
+        position: static;
+        max-width: 300px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      #projects .section-header {
+        max-width: 100%;
+      }
+
+      #blog {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 520px) {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
 
       .nav-links {
-
         gap: 1.25rem;
-
         flex-wrap: wrap;
-
       }
-
 
       .hero {
-
         margin-bottom: 4rem;
-
       }
-
 
       .torus-wrap {
-
-        width:
-          min(
-            260px,
-            75vw
-          );
-
+        width: min(260px, 75vw);
       }
 
+      .project-viz-column {
+        max-width: 250px;
+      }
 
       footer {
-
-        flex-direction:
-          column;
-
+        flex-direction: column;
         gap: 1rem;
-
         text-align: center;
-
       }
-
 
       .section-header {
-
-        flex-direction:
-          column;
-
+        flex-direction: column;
         gap: 0.5rem;
-
       }
-
     }
 
-
-
-    /* ─────────────────────────────
-       Reduced motion
-    ───────────────────────────── */
-
-
-    @media
-    (prefers-reduced-motion: reduce) {
-
-
+    @media (prefers-reduced-motion: reduce) {
       .hero,
       section {
-
         animation: none;
-
         opacity: 1;
-
         transform: none;
-
       }
-
     }
-
   </style>
-
 </head>
-
-
 
 <body>
 
-
   <div class="container">
-
-
 
     <!-- Navigation -->
 
-
     <nav>
-
-
-      <a
-        class="nav-name"
-        href="index.html"
-      >
-
-
+      <a class="nav-name" href="index.html">
         <img
           class="site-logo"
           src="logo.svg"
           alt="Logo Arthus Goujon"
         />
-
-
-        <span>
-          Arthus Goujon
-        </span>
-
-
+        <span>Arthus Goujon</span>
       </a>
 
-
-
       <ul class="nav-links">
-
-
-        <li>
-
-          <a href="#blog">
-            Blog
-          </a>
-
-        </li>
-
-
-        <li>
-
-          <a href="#projects">
-            Projects
-          </a>
-
-        </li>
-
-
-        <li>
-
-          <a href="resume.html">
-            Resume
-          </a>
-
-        </li>
-
-
-        <li>
-
-          <a href="#contact">
-            Contact
-          </a>
-
-        </li>
-
-
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
-
-
     </nav>
-
 
 
     <!-- Hero -->
 
-
     <div class="hero">
 
-
-
-      <!-- Intro -->
-
-
       <div class="intro">
-
-
         <p>
-
-          Hello, I am
-
-          <strong>
-            Arthus Goujon
-          </strong>.
-
+          Hello, I am <strong>Arthus Goujon</strong>.
         </p>
 
-
-
         <p>
-
           I am a student at
-
-          <em>
-            École Polytechnique –
-            Institut Polytechnique de Paris
-          </em>
-
-          and
-
-          <em>
-            HEC Paris
-          </em>,
-
-          with a background
-          in mathematics.
-
-          I am interested in
-
-          <strong>
-            applied mathematics
-          </strong>,
-
-          <strong>
-            machine learning
-          </strong>,
-
-          <strong>
-            game theory
-          </strong>,
-
-          and
-
-          <strong>
-            quantitative finance
-          </strong>.
-
+          <em>École Polytechnique – Institut Polytechnique de Paris</em>
+          and <em>HEC Paris</em>, with a background in mathematics.
+          I am interested in <strong>applied mathematics</strong>,
+          <strong>machine learning</strong>,
+          <strong>game theory</strong>,
+          and <strong>quantitative finance</strong>.
         </p>
-
-
 
         <p>
-
-          This website gathers
-          some of my research projects
-          and other work.
-
+          This website gathers some of my research projects and other work.
         </p>
-
-
 
         <div class="social-links">
-
-
           <a
             href="https://github.com/Arthus-HEC"
             target="_blank"
             rel="noopener noreferrer"
           >
-
             GitHub
-
           </a>
-
 
           <a
             href="https://www.linkedin.com/in/arthus-goujon-07819b20b/"
             target="_blank"
             rel="noopener noreferrer"
           >
-
             LinkedIn
-
           </a>
-
-
         </div>
-
-
       </div>
-
-
-
-      <!-- Random topological object -->
-
 
       <div
         class="torus-wrap"
         aria-hidden="true"
       >
-
-
         <canvas
           id="torus-canvas"
           class="torus-canvas"
         ></canvas>
-
-
       </div>
-
 
     </div>
 
 
-
     <!-- Projects -->
-
 
     <section id="projects">
 
-
       <div class="section-header">
-
-
-        <h2>
-          Projects
-        </h2>
-
-
+        <h2>Projects</h2>
       </div>
 
+      <div class="projects-shell">
 
-
-      <div class="projects-list">
-
-
-
-        <!-- Scores as Infrastructures -->
-
-
-        <a
-          class="project-item"
-          href="market_design.html"
+        <div
+          class="projects-list"
+          id="projects-list"
         >
 
+          <a
+            class="project-item"
+            href="market_design.html"
+            data-viz="market"
+          >
+            <div class="project-title">
+              Scores as Infrastructures
+            </div>
 
-          <div class="project-title">
+            <div class="project-desc">
+              A dynamic game-theoretic model of strategic scoring,
+              reputation, endogenous exposure and probabilistic auditing
+              on digital platforms.
+            </div>
 
-            Scores as Infrastructures
-
-          </div>
-
-
-          <div class="project-desc">
-
-            A dynamic game-theoretic model
-            of strategic scoring, reputation,
-            endogenous exposure and
-            probabilistic auditing
-            on digital platforms.
-
-          </div>
-
-
-          <span class="project-tag">
-            Game Theory
-          </span>
+            <span class="project-tag">Game Theory</span>
+            <span class="project-tag">Market Design</span>
+            <span class="project-tag">Platform Economics</span>
+          </a>
 
 
-          <span class="project-tag">
-            Market Design
-          </span>
+          <a
+            class="project-item"
+            href="amm.html"
+            data-viz="amm"
+          >
+            <div class="project-title">
+              Optimal Routing in AMM-based Ecosystems
+            </div>
+
+            <div class="project-desc">
+              A convex optimization framework for optimal trade routing
+              across networks of Constant Function Market Makers,
+              with dual no-arbitrage certificates and numerical
+              implementation in Python.
+            </div>
+
+            <span class="project-tag">Quantitative Finance</span>
+            <span class="project-tag">Convex Optimization</span>
+            <span class="project-tag">DeFi</span>
+          </a>
 
 
-          <span class="project-tag">
-            Platform Economics
-          </span>
+          <a
+            class="project-item"
+            href="mario.html"
+            data-viz="mario"
+          >
+            <div class="project-title">
+              Mario Party: Tricky Turntable
+            </div>
+
+            <div class="project-desc">
+              An adaptive-agent benchmark combining game theory,
+              Bayesian opponent modelling and reinforcement learning
+              across more than 60 million simulated interactions.
+            </div>
+
+            <span class="project-tag">Machine Learning</span>
+            <span class="project-tag">Bayesian Learning</span>
+            <span class="project-tag">Reinforcement Learning</span>
+          </a>
 
 
-        </a>
+          <a
+            class="project-item"
+            href="turntable-transformer.html"
+            data-viz="transformer"
+          >
+            <div class="project-title">
+              Tiny Turntable Transformer
+            </div>
+
+            <div class="project-desc">
+              A small Transformer that learns hidden opponent behavior
+              from recent interactions and combines sequence predictions
+              with a game-theoretic best-response layer.
+            </div>
+
+            <span class="project-tag">Deep Learning</span>
+            <span class="project-tag">Transformers</span>
+            <span class="project-tag">Game Theory</span>
+          </a>
+
+        </div>
 
 
+        <!-- Project visualization -->
 
-        <!-- AMM -->
-
-
-        <a
-          class="project-item"
-          href="amm.html"
+        <aside
+          class="project-viz-column"
+          aria-hidden="true"
         >
-
-
-          <div class="project-title">
-
-            Optimal Routing
-            in AMM-based Ecosystems
-
+          <div class="project-viz">
+            <canvas id="project-viz-canvas"></canvas>
           </div>
 
+          <div class="project-viz-meta">
+            <div class="project-viz-kicker">
+              project / visual
+            </div>
 
-          <div class="project-desc">
-
-            A convex optimization framework
-            for optimal trade routing
-            across networks of Constant
-            Function Market Makers,
-            with dual no-arbitrage certificates
-            and numerical implementation
-            in Python.
-
+            <div
+              class="project-viz-name"
+              id="project-viz-name"
+            >
+              Scores as Infrastructures
+            </div>
           </div>
-
-
-          <span class="project-tag">
-            Quantitative Finance
-          </span>
-
-
-          <span class="project-tag">
-            Convex Optimization
-          </span>
-
-
-          <span class="project-tag">
-            DeFi
-          </span>
-
-
-        </a>
-
-
-
-        <!-- Mario Party -->
-
-
-        <a
-          class="project-item"
-          href="mario.html"
-        >
-
-
-          <div class="project-title">
-
-            Mario Party:
-            Tricky Turntable
-
-          </div>
-
-
-          <div class="project-desc">
-
-            An adaptive-agent benchmark
-            combining game theory,
-            Bayesian opponent modelling
-            and reinforcement learning
-            across more than
-            60 million simulated interactions.
-
-          </div>
-
-
-          <span class="project-tag">
-            Machine Learning
-          </span>
-
-
-          <span class="project-tag">
-            Bayesian Learning
-          </span>
-
-
-          <span class="project-tag">
-            Reinforcement Learning
-          </span>
-
-
-        </a>
-
-
-
-        <!-- Transformer -->
-
-
-        <a
-          class="project-item"
-          href="turntable-transformer.html"
-        >
-
-
-          <div class="project-title">
-
-            Tiny Turntable Transformer
-
-          </div>
-
-
-          <div class="project-desc">
-
-            A small Transformer
-            that learns hidden opponent behavior
-            from recent interactions
-            and combines sequence predictions
-            with a game-theoretic
-            best-response layer.
-
-          </div>
-
-
-          <span class="project-tag">
-            Deep Learning
-          </span>
-
-
-          <span class="project-tag">
-            Transformers
-          </span>
-
-
-          <span class="project-tag">
-            Game Theory
-          </span>
-
-
-        </a>
-
+        </aside>
 
       </div>
-
 
     </section>
 
 
-
     <!-- Blog -->
-
 
     <section id="blog">
 
-
       <div class="section-header">
-
-
-        <h2>
-          Blog
-        </h2>
-
+        <h2>Blog</h2>
 
         <a
           class="view-all"
           href="blog.html"
         >
-
           View all →
-
         </a>
-
-
       </div>
 
-
-
       <div class="blog-list">
-
 
         <a
           class="blog-item"
           href="blog.html"
         >
-
-
           <span class="blog-date">
             2026
           </span>
 
-
           <span class="blog-title">
             Work in progress
           </span>
-
-
         </a>
 
-
       </div>
-
 
     </section>
 
 
-
     <!-- Footer -->
-
 
     <footer id="contact">
 
-
       <span class="footer-name">
-
         Arthus Goujon
-
       </span>
 
-
-
       <div class="footer-links">
-
 
         <a
           href="https://github.com/Arthus-HEC"
           target="_blank"
           rel="noopener noreferrer"
         >
-
           GitHub
-
         </a>
-
 
         <a
           href="https://www.linkedin.com/in/arthus-goujon-07819b20b/"
           target="_blank"
           rel="noopener noreferrer"
         >
-
           LinkedIn
-
         </a>
 
-
-        <a
-          href="mailto:arthus.goujon@hec.edu"
-        >
-
+        <a href="mailto:arthus.goujon@hec.edu">
           Email
-
         </a>
-
 
       </div>
 
-
     </footer>
-
 
   </div>
 
 
-
-  <!-- ─────────────────────────────
-       Random mathematical object
-  ───────────────────────────── -->
-
+  <!-- Random topological object -->
 
   <script type="module">
 
-
-    import * as THREE
-      from "three";
-
+    import * as THREE from "three";
 
     import {
       ParametricGeometry
-    }
-      from
-      "three/addons/geometries/ParametricGeometry.js";
-
+    } from "three/addons/geometries/ParametricGeometry.js";
 
 
     const canvas =
-      document.getElementById(
-        "torus-canvas"
-      );
-
+      document.getElementById("torus-canvas");
 
 
     if (canvas) {
 
-
-
-      /* ─────────────────────────────
-         Scene
-      ───────────────────────────── */
-
-
       const scene =
         new THREE.Scene();
-
-
-
-      /* ─────────────────────────────
-         Camera
-      ───────────────────────────── */
 
 
       const camera =
@@ -1549,45 +904,23 @@
         );
 
 
-      /*
-       * Extra room around the object
-       * to avoid clipping during rotation.
-       */
-
       camera.position.z = 6.2;
-
-
-
-      /* ─────────────────────────────
-         Renderer
-      ───────────────────────────── */
 
 
       const renderer =
         new THREE.WebGLRenderer({
-
           canvas,
-
           antialias: true,
-
           alpha: true
-
         });
 
 
-
       renderer.setPixelRatio(
-
         Math.min(
-
           window.devicePixelRatio,
-
           2
-
         )
-
       );
-
 
 
       renderer.setClearColor(
@@ -1596,36 +929,21 @@
       );
 
 
-
-      /* ─────────────────────────────
-         Torus
-      ───────────────────────────── */
-
+      /* ───────── Torus ───────── */
 
       function createTorus() {
 
-
         return new THREE.TorusGeometry(
-
           1.1,
-
           0.34,
-
           30,
-
           120
-
         );
-
 
       }
 
 
-
-      /* ─────────────────────────────
-         Möbius strip
-      ───────────────────────────── */
-
+      /* ───────── Möbius ───────── */
 
       function mobius(
         u,
@@ -1633,56 +951,37 @@
         target
       ) {
 
-
         const angle =
           u * Math.PI * 2;
 
-
-        /*
-         * Width of the strip.
-         */
 
         const width =
           (v - 0.5) * 0.85;
 
 
-
         const x =
-
           (
             1 +
             width *
             Math.cos(angle / 2)
           )
-
           *
-
           Math.cos(angle);
 
 
-
         const y =
-
           (
             1 +
             width *
             Math.cos(angle / 2)
           )
-
           *
-
           Math.sin(angle);
 
 
-
         const z =
-
           width *
-
-          Math.sin(
-            angle / 2
-          );
-
+          Math.sin(angle / 2);
 
 
         target.set(
@@ -1691,40 +990,27 @@
           z
         );
 
-
       }
-
 
 
       function createMobius() {
 
-
         return new ParametricGeometry(
-
           mobius,
-
           120,
-
           24
-
         );
-
 
       }
 
 
-
-      /* ─────────────────────────────
-         Klein bottle
-      ───────────────────────────── */
-
+      /* ───────── Klein bottle ───────── */
 
       function klein(
         v,
         u,
         target
       ) {
-
 
         u *= Math.PI;
 
@@ -1736,29 +1022,23 @@
         u *= 2;
 
 
-
         let x;
 
         let z;
-
 
 
         if (
           u < Math.PI
         ) {
 
-
           x =
-
             3 *
             Math.cos(u) *
             (
               1 +
               Math.sin(u)
             )
-
             +
-
             (
               2 *
               (
@@ -1766,93 +1046,63 @@
                 Math.cos(u) / 2
               )
             )
-
             *
-
             Math.cos(u)
-
             *
-
             Math.cos(v);
 
 
-
           z =
-
             -8 *
             Math.sin(u)
-
             -
-
             2 *
             (
               1 -
               Math.cos(u) / 2
             )
-
             *
-
             Math.sin(u)
-
             *
-
             Math.cos(v);
 
-
-        }
-
-
-        else {
-
+        } else {
 
           x =
-
             3 *
             Math.cos(u) *
             (
               1 +
               Math.sin(u)
             )
-
             +
-
             2 *
             (
               1 -
               Math.cos(u) / 2
             )
-
             *
-
             Math.cos(
               v +
               Math.PI
             );
 
 
-
           z =
-
             -8 *
             Math.sin(u);
-
 
         }
 
 
-
         const y =
-
           -2 *
           (
             1 -
             Math.cos(u) / 2
           )
-
           *
-
           Math.sin(v);
-
 
 
         target.set(
@@ -1861,228 +1111,103 @@
           z
         );
 
-
       }
-
 
 
       function createKleinBottle() {
 
-
         return new ParametricGeometry(
-
           klein,
-
           100,
-
           28
-
         );
-
 
       }
 
 
-
-      /* ─────────────────────────────
-         Random selection
-      ───────────────────────────── */
-
+      /* ───────── Random choice ───────── */
 
       const availableObjects = [
-
-
         {
-
-          name:
-            "Torus",
-
-          create:
-            createTorus
-
+          name: "Torus",
+          create: createTorus
         },
-
-
         {
-
-          name:
-            "Mobius Strip",
-
-          create:
-            createMobius
-
+          name: "Mobius Strip",
+          create: createMobius
         },
-
-
         {
-
-          name:
-            "Klein Bottle",
-
-          create:
-            createKleinBottle
-
+          name: "Klein Bottle",
+          create: createKleinBottle
         }
-
-
       ];
 
 
-
       const chosenObject =
-
         availableObjects[
-
           Math.floor(
-
-            Math.random()
-
-            *
-
+            Math.random() *
             availableObjects.length
-
           )
-
         ];
-
 
 
       let geometry =
         chosenObject.create();
 
 
-
-      /* ─────────────────────────────
-         Center geometry
-      ───────────────────────────── */
-
-
       geometry.center();
 
-
-
-      /* ─────────────────────────────
-         Normalize dimensions
-      ───────────────────────────── */
-
-
       geometry.computeBoundingSphere();
-
 
 
       if (
         geometry.boundingSphere
       ) {
 
-
-        /*
-         * Every surface fits into
-         * approximately the same sphere.
-         *
-         * This also prevents the Klein bottle
-         * from appearing much larger
-         * than the torus or Möbius strip.
-         */
-
         const desiredRadius =
           1.35;
 
 
-
         const scale =
-
-          desiredRadius
-
-          /
-
-          geometry
-            .boundingSphere
-            .radius;
-
+          desiredRadius /
+          geometry.boundingSphere.radius;
 
 
         geometry.scale(
-
           scale,
-
           scale,
-
           scale
-
         );
-
 
       }
 
 
-
-      /* ─────────────────────────────
-         Wireframe material
-      ───────────────────────────── */
-
-
       const material =
         new THREE.MeshBasicMaterial({
-
-
-          color:
-            0xc0392b,
-
-
-          wireframe:
-            true,
-
-
-          transparent:
-            true,
-
-
-          opacity:
-            0.72,
-
-
-          side:
-            THREE.DoubleSide
-
-
+          color: 0xc0392b,
+          wireframe: true,
+          transparent: true,
+          opacity: 0.72,
+          side: THREE.DoubleSide
         });
-
-
-
-      /* ─────────────────────────────
-         Create object
-      ───────────────────────────── */
 
 
       const shape =
         new THREE.Mesh(
-
           geometry,
-
           material
-
         );
-
-
-
-      /*
-       * Initial angle.
-       * Slightly asymmetric so
-       * each surface reads as 3D.
-       */
 
 
       shape.rotation.x =
         0.8;
 
-
       shape.rotation.y =
         0.35;
 
-
       shape.rotation.z =
         -0.15;
-
 
 
       scene.add(
@@ -2090,157 +1215,1438 @@
       );
 
 
-
-      /*
-       * You can open the browser console
-       * if you want to know which
-       * surface was selected.
-       */
-
-      console.log(
-
-        "Topological object:",
-
-        chosenObject.name
-
-      );
-
-
-
-      /* ─────────────────────────────
-         Responsive renderer
-      ───────────────────────────── */
-
-
       function resizeRenderer() {
-
 
         const wrapper =
           canvas.parentElement;
 
 
-
         const width =
           wrapper.clientWidth;
-
 
         const height =
           wrapper.clientHeight;
 
 
-
         renderer.setSize(
-
           width,
-
           height,
-
           false
-
         );
 
 
-
         camera.aspect =
-
-          width /
-
-          height;
-
+          width / height;
 
 
         camera.updateProjectionMatrix();
 
-
       }
-
 
 
       resizeRenderer();
 
 
-
       window.addEventListener(
-
         "resize",
-
         resizeRenderer
-
       );
-
-
-
-      /* ─────────────────────────────
-         Reduced motion
-      ───────────────────────────── */
 
 
       const reducedMotion =
         window.matchMedia(
-
           "(prefers-reduced-motion: reduce)"
-
         );
 
 
-
-      /* ─────────────────────────────
-         Animation
-      ───────────────────────────── */
-
-
       function animate() {
-
 
         if (
           !reducedMotion.matches
         ) {
 
-
           shape.rotation.x +=
             0.0022;
-
 
           shape.rotation.y +=
             0.0035;
 
-
           shape.rotation.z +=
             0.0008;
-
 
         }
 
 
-
         renderer.render(
-
           scene,
-
           camera
-
         );
-
 
 
         requestAnimationFrame(
           animate
         );
 
-
       }
-
 
 
       animate();
 
-
     }
-
 
   </script>
 
 
-</body>
+  <!-- Interactive project visualizations -->
 
+  <script>
+
+    (() => {
+
+      const canvas =
+        document.getElementById(
+          "project-viz-canvas"
+        );
+
+
+      if (!canvas) {
+        return;
+      }
+
+
+      const ctx =
+        canvas.getContext("2d");
+
+
+      const nameElement =
+        document.getElementById(
+          "project-viz-name"
+        );
+
+
+      const projectItems =
+        Array.from(
+          document.querySelectorAll(
+            ".project-item[data-viz]"
+          )
+        );
+
+
+      const styles =
+        getComputedStyle(
+          document.documentElement
+        );
+
+
+      const accent =
+        styles
+          .getPropertyValue("--accent")
+          .trim();
+
+
+      const muted =
+        styles
+          .getPropertyValue("--muted")
+          .trim();
+
+
+      const border =
+        styles
+          .getPropertyValue("--border")
+          .trim();
+
+
+      const background =
+        styles
+          .getPropertyValue("--bg")
+          .trim();
+
+
+      const names = {
+
+        market:
+          "Scores as Infrastructures",
+
+        amm:
+          "Optimal Routing",
+
+        mario:
+          "Adaptive Agents",
+
+        transformer:
+          "Transformer Attention"
+
+      };
+
+
+      const modes = [
+        "market",
+        "amm",
+        "mario",
+        "transformer"
+      ];
+
+
+      let mode =
+        "market";
+
+
+      let hovered =
+        false;
+
+
+      let lastAutoSwitch =
+        performance.now();
+
+
+      let width = 0;
+      let height = 0;
+      let dpr = 1;
+
+
+      function resize() {
+
+        const rect =
+          canvas.getBoundingClientRect();
+
+
+        dpr =
+          Math.min(
+            window.devicePixelRatio || 1,
+            2
+          );
+
+
+        width =
+          rect.width;
+
+
+        height =
+          rect.height;
+
+
+        canvas.width =
+          Math.round(
+            width * dpr
+          );
+
+
+        canvas.height =
+          Math.round(
+            height * dpr
+          );
+
+
+        ctx.setTransform(
+          dpr,
+          0,
+          0,
+          dpr,
+          0,
+          0
+        );
+
+      }
+
+
+      resize();
+
+
+      window.addEventListener(
+        "resize",
+        resize
+      );
+
+
+      function setMode(
+        nextMode,
+        activeItem = null
+      ) {
+
+        mode =
+          nextMode;
+
+
+        nameElement.textContent =
+          names[nextMode];
+
+
+        projectItems.forEach(
+          item => {
+
+            item.classList.toggle(
+              "is-active",
+              item === activeItem
+            );
+
+          }
+        );
+
+      }
+
+
+      projectItems.forEach(
+        item => {
+
+          item.addEventListener(
+            "mouseenter",
+            () => {
+
+              hovered =
+                true;
+
+
+              setMode(
+                item.dataset.viz,
+                item
+              );
+
+            }
+          );
+
+
+          item.addEventListener(
+            "focus",
+            () => {
+
+              hovered =
+                true;
+
+
+              setMode(
+                item.dataset.viz,
+                item
+              );
+
+            }
+          );
+
+
+          item.addEventListener(
+            "mouseleave",
+            () => {
+
+              hovered =
+                false;
+
+
+              item.classList.remove(
+                "is-active"
+              );
+
+
+              lastAutoSwitch =
+                performance.now();
+
+            }
+          );
+
+
+          item.addEventListener(
+            "blur",
+            () => {
+
+              hovered =
+                false;
+
+
+              item.classList.remove(
+                "is-active"
+              );
+
+
+              lastAutoSwitch =
+                performance.now();
+
+            }
+          );
+
+        }
+      );
+
+
+      /* ─────────────────────────────
+         Helpers
+      ───────────────────────────── */
+
+
+      function clear() {
+
+        ctx.clearRect(
+          0,
+          0,
+          width,
+          height
+        );
+
+      }
+
+
+      function line(
+        x1,
+        y1,
+        x2,
+        y2,
+        color = border,
+        alpha = 1,
+        lineWidth = 1
+      ) {
+
+        ctx.save();
+
+        ctx.globalAlpha =
+          alpha;
+
+        ctx.strokeStyle =
+          color;
+
+        ctx.lineWidth =
+          lineWidth;
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+          x1,
+          y1
+        );
+
+        ctx.lineTo(
+          x2,
+          y2
+        );
+
+        ctx.stroke();
+
+        ctx.restore();
+
+      }
+
+
+      function circle(
+        x,
+        y,
+        r,
+        stroke = accent,
+        fill = null,
+        alpha = 1,
+        lineWidth = 1
+      ) {
+
+        ctx.save();
+
+        ctx.globalAlpha =
+          alpha;
+
+        ctx.lineWidth =
+          lineWidth;
+
+        ctx.strokeStyle =
+          stroke;
+
+
+        if (fill) {
+
+          ctx.fillStyle =
+            fill;
+
+        }
+
+
+        ctx.beginPath();
+
+        ctx.arc(
+          x,
+          y,
+          r,
+          0,
+          Math.PI * 2
+        );
+
+
+        if (fill) {
+          ctx.fill();
+        }
+
+
+        ctx.stroke();
+
+        ctx.restore();
+
+      }
+
+
+      /* ─────────────────────────────
+         Scores / network
+      ───────────────────────────── */
+
+
+      const networkNodes = [
+        [0.18, 0.42],
+        [0.39, 0.23],
+        [0.68, 0.30],
+        [0.80, 0.56],
+        [0.56, 0.72],
+        [0.28, 0.70]
+      ];
+
+
+      const networkEdges = [
+        [0, 1],
+        [1, 2],
+        [2, 3],
+        [3, 4],
+        [4, 5],
+        [5, 0],
+        [1, 4],
+        [0, 3],
+        [2, 5]
+      ];
+
+
+      function drawMarket(
+        time
+      ) {
+
+        const t =
+          time * 0.001;
+
+
+        const points =
+          networkNodes.map(
+            (
+              node,
+              i
+            ) => {
+
+              const jitterX =
+                Math.sin(
+                  t * 0.7 +
+                  i * 1.9
+                ) *
+                width *
+                0.018;
+
+
+              const jitterY =
+                Math.cos(
+                  t * 0.55 +
+                  i * 1.45
+                ) *
+                height *
+                0.018;
+
+
+              return [
+                node[0] *
+                  width +
+                  jitterX,
+
+                node[1] *
+                  height +
+                  jitterY
+              ];
+
+            }
+          );
+
+
+        networkEdges.forEach(
+          (
+            edge,
+            i
+          ) => {
+
+            const a =
+              points[
+                edge[0]
+              ];
+
+
+            const b =
+              points[
+                edge[1]
+              ];
+
+
+            const pulse =
+              0.18 +
+              0.16 *
+              (
+                0.5 +
+                0.5 *
+                Math.sin(
+                  t * 1.3 +
+                  i
+                )
+              );
+
+
+            line(
+              a[0],
+              a[1],
+              b[0],
+              b[1],
+              muted,
+              pulse
+            );
+
+          }
+        );
+
+
+        points.forEach(
+          (
+            point,
+            i
+          ) => {
+
+            const pulse =
+              4.5 +
+              Math.sin(
+                t * 1.4 +
+                i
+              ) *
+              1.2;
+
+
+            circle(
+              point[0],
+              point[1],
+              pulse,
+              accent,
+              background,
+              0.75,
+              1.1
+            );
+
+          }
+        );
+
+
+        const phase =
+          (
+            t * 0.17
+          ) %
+          1;
+
+
+        const a =
+          points[1];
+
+
+        const b =
+          points[4];
+
+
+        const x =
+          a[0] +
+          (
+            b[0] -
+            a[0]
+          ) *
+          phase;
+
+
+        const y =
+          a[1] +
+          (
+            b[1] -
+            a[1]
+          ) *
+          phase;
+
+
+        circle(
+          x,
+          y,
+          2.2,
+          accent,
+          accent,
+          0.9
+        );
+
+      }
+
+
+      /* ─────────────────────────────
+         AMM routing
+      ───────────────────────────── */
+
+
+      function drawAMM(
+        time
+      ) {
+
+        const t =
+          time * 0.001;
+
+
+        const pad =
+          width * 0.12;
+
+
+        const graphWidth =
+          width -
+          pad * 2;
+
+
+        const graphHeight =
+          height -
+          pad * 2;
+
+
+        line(
+          pad,
+          height - pad,
+          width - pad,
+          height - pad,
+          muted,
+          0.25
+        );
+
+
+        line(
+          pad,
+          pad,
+          pad,
+          height - pad,
+          muted,
+          0.25
+        );
+
+
+        const curves = [
+          {
+            scale: 0.78,
+            phase: 0
+          },
+          {
+            scale: 0.61,
+            phase: 0.5
+          },
+          {
+            scale: 0.47,
+            phase: 1
+          }
+        ];
+
+
+        curves.forEach(
+          (
+            curve,
+            curveIndex
+          ) => {
+
+            ctx.save();
+
+            ctx.strokeStyle =
+              curveIndex === 0
+                ? accent
+                : muted;
+
+
+            ctx.globalAlpha =
+              curveIndex === 0
+                ? 0.65
+                : 0.25;
+
+
+            ctx.lineWidth =
+              curveIndex === 0
+                ? 1.25
+                : 1;
+
+
+            ctx.beginPath();
+
+
+            for (
+              let i = 0;
+              i <= 90;
+              i++
+            ) {
+
+              const xNorm =
+                0.08 +
+                (
+                  i / 90
+                ) *
+                0.88;
+
+
+              const yNorm =
+                Math.min(
+                  0.95,
+                  curve.scale /
+                  (
+                    xNorm +
+                    0.3
+                  )
+                );
+
+
+              const x =
+                pad +
+                xNorm *
+                graphWidth;
+
+
+              const y =
+                height -
+                pad -
+                yNorm *
+                graphHeight *
+                0.72;
+
+
+              if (
+                i === 0
+              ) {
+
+                ctx.moveTo(
+                  x,
+                  y
+                );
+
+              } else {
+
+                ctx.lineTo(
+                  x,
+                  y
+                );
+
+              }
+
+            }
+
+
+            ctx.stroke();
+
+            ctx.restore();
+
+          }
+        );
+
+
+        const progress =
+          (
+            t * 0.11
+          ) %
+          1;
+
+
+        const xNorm =
+          0.18 +
+          progress *
+          0.68;
+
+
+        const yNorm =
+          Math.min(
+            0.95,
+            0.78 /
+            (
+              xNorm +
+              0.3
+            )
+          );
+
+
+        const pointX =
+          pad +
+          xNorm *
+          graphWidth;
+
+
+        const pointY =
+          height -
+          pad -
+          yNorm *
+          graphHeight *
+          0.72;
+
+
+        circle(
+          pointX,
+          pointY,
+          3.5,
+          accent,
+          background,
+          0.9,
+          1.2
+        );
+
+
+        const nodes = [
+          [0.24, 0.76],
+          [0.54, 0.48],
+          [0.80, 0.70]
+        ];
+
+
+        nodes.forEach(
+          (
+            node,
+            i
+          ) => {
+
+            const x =
+              node[0] *
+              width;
+
+
+            const y =
+              node[1] *
+              height;
+
+
+            circle(
+              x,
+              y,
+              4,
+              accent,
+              background,
+              0.55
+            );
+
+
+            if (
+              i <
+              nodes.length - 1
+            ) {
+
+              const next =
+                nodes[
+                  i + 1
+                ];
+
+
+              line(
+                x,
+                y,
+                next[0] *
+                  width,
+                next[1] *
+                  height,
+                accent,
+                0.18
+              );
+
+            }
+
+          }
+        );
+
+      }
+
+
+      /* ─────────────────────────────
+         Mario / adaptive agents
+      ───────────────────────────── */
+
+
+      function drawMario(
+        time
+      ) {
+
+        const t =
+          time * 0.001;
+
+
+        const cx =
+          width / 2;
+
+
+        const cy =
+          height / 2;
+
+
+        const radius =
+          Math.min(
+            width,
+            height
+          ) *
+          0.29;
+
+
+        circle(
+          cx,
+          cy,
+          radius * 0.28,
+          muted,
+          null,
+          0.24
+        );
+
+
+        for (
+          let i = 0;
+          i < 3;
+          i++
+        ) {
+
+          const angle =
+            t *
+            (
+              0.23 +
+              i * 0.025
+            )
+            +
+            i *
+            (
+              Math.PI *
+              2 /
+              3
+            );
+
+
+          const x =
+            cx +
+            Math.cos(angle) *
+            radius;
+
+
+          const y =
+            cy +
+            Math.sin(angle) *
+            radius;
+
+
+          line(
+            cx,
+            cy,
+            x,
+            y,
+            muted,
+            0.16
+          );
+
+
+          const pulse =
+            5 +
+            (
+              Math.sin(
+                t * 1.8 +
+                i * 2
+              ) +
+              1
+            ) *
+            1.1;
+
+
+          circle(
+            x,
+            y,
+            pulse,
+            accent,
+            background,
+            0.72,
+            1.1
+          );
+
+        }
+
+
+        const innerAngle =
+          -t * 0.55;
+
+
+        const px =
+          cx +
+          Math.cos(
+            innerAngle
+          ) *
+          radius *
+          0.18;
+
+
+        const py =
+          cy +
+          Math.sin(
+            innerAngle
+          ) *
+          radius *
+          0.18;
+
+
+        circle(
+          px,
+          py,
+          2.6,
+          accent,
+          accent,
+          0.9
+        );
+
+
+        for (
+          let i = 0;
+          i < 8;
+          i++
+        ) {
+
+          const angle =
+            i *
+            Math.PI /
+            4;
+
+
+          const inner =
+            radius *
+            0.38;
+
+
+          const outer =
+            radius *
+            0.48;
+
+
+          line(
+            cx +
+            Math.cos(angle) *
+            inner,
+            cy +
+            Math.sin(angle) *
+            inner,
+            cx +
+            Math.cos(angle) *
+            outer,
+            cy +
+            Math.sin(angle) *
+            outer,
+            muted,
+            0.18
+          );
+
+        }
+
+      }
+
+
+      /* ─────────────────────────────
+         Transformer attention
+      ───────────────────────────── */
+
+
+      function drawTransformer(
+        time
+      ) {
+
+        const t =
+          time * 0.001;
+
+
+        const n =
+          7;
+
+
+        const gap =
+          4;
+
+
+        const maxSize =
+          Math.min(
+            width,
+            height
+          ) *
+          0.72;
+
+
+        const cell =
+          (
+            maxSize -
+            gap *
+            (
+              n - 1
+            )
+          ) /
+          n;
+
+
+        const startX =
+          (
+            width -
+            maxSize
+          ) /
+          2;
+
+
+        const startY =
+          (
+            height -
+            maxSize
+          ) /
+          2;
+
+
+        for (
+          let row = 0;
+          row < n;
+          row++
+        ) {
+
+          for (
+            let col = 0;
+            col < n;
+            col++
+          ) {
+
+            const distance =
+              Math.abs(
+                row -
+                col
+              );
+
+
+            const wave =
+              0.5 +
+              0.5 *
+              Math.sin(
+                t * 1.4 +
+                row * 0.7 +
+                col * 0.45
+              );
+
+
+            const attention =
+              Math.max(
+                0,
+                1 -
+                distance /
+                n
+              )
+              *
+              (
+                0.25 +
+                0.75 *
+                wave
+              );
+
+
+            const x =
+              startX +
+              col *
+              (
+                cell +
+                gap
+              );
+
+
+            const y =
+              startY +
+              row *
+              (
+                cell +
+                gap
+              );
+
+
+            ctx.save();
+
+            ctx.globalAlpha =
+              0.05 +
+              attention *
+              0.45;
+
+
+            ctx.fillStyle =
+              accent;
+
+
+            ctx.fillRect(
+              x,
+              y,
+              cell,
+              cell
+            );
+
+
+            ctx.restore();
+
+
+            ctx.save();
+
+            ctx.globalAlpha =
+              0.12;
+
+
+            ctx.strokeStyle =
+              muted;
+
+
+            ctx.lineWidth =
+              0.6;
+
+
+            ctx.strokeRect(
+              x,
+              y,
+              cell,
+              cell
+            );
+
+
+            ctx.restore();
+
+          }
+
+        }
+
+
+        const active =
+          Math.floor(
+            (
+              t * 1.3
+            ) %
+            n
+          );
+
+
+        line(
+          startX,
+          startY +
+          active *
+          (
+            cell +
+            gap
+          ) +
+          cell / 2,
+          startX +
+          maxSize,
+          startY +
+          active *
+          (
+            cell +
+            gap
+          ) +
+          cell / 2,
+          accent,
+          0.23
+        );
+
+      }
+
+
+      /* ─────────────────────────────
+         Main loop
+      ───────────────────────────── */
+
+
+      const reducedMotion =
+        window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        );
+
+
+      function draw(
+        time
+      ) {
+
+        clear();
+
+
+        if (
+          !hovered &&
+          !reducedMotion.matches
+        ) {
+
+          if (
+            time -
+            lastAutoSwitch >
+            4200
+          ) {
+
+            const currentIndex =
+              modes.indexOf(
+                mode
+              );
+
+
+            const nextIndex =
+              (
+                currentIndex +
+                1
+              ) %
+              modes.length;
+
+
+            setMode(
+              modes[
+                nextIndex
+              ]
+            );
+
+
+            lastAutoSwitch =
+              time;
+
+          }
+
+        }
+
+
+        if (
+          mode ===
+          "market"
+        ) {
+
+          drawMarket(
+            time
+          );
+
+        }
+
+
+        if (
+          mode ===
+          "amm"
+        ) {
+
+          drawAMM(
+            time
+          );
+
+        }
+
+
+        if (
+          mode ===
+          "mario"
+        ) {
+
+          drawMario(
+            time
+          );
+
+        }
+
+
+        if (
+          mode ===
+          "transformer"
+        ) {
+
+          drawTransformer(
+            time
+          );
+
+        }
+
+
+        requestAnimationFrame(
+          draw
+        );
+
+      }
+
+
+      requestAnimationFrame(
+        draw
+      );
+
+    })();
+
+  </script>
+
+</body>
 </html>
